@@ -1,0 +1,28 @@
+# Sharp End Marketing - Approved Statistics
+# All statistics cited on the site must reference an ID from this file.
+# Never fabricate numbers — only use verified client metrics.
+
+categories:
+  - name: "Case Study Metrics"
+    stats:
+      - id: jack-storms-engagement
+        value: "40%"
+        label: "Increase in customer engagement"
+        client: "Jack Storms"
+        source: "Internal analytics"
+        status: approved
+
+      - id: smithwood-enrollments
+        value: "30%"
+        label: "Increase in enrollments"
+        client: "Smithwood Builders"
+        source: "Internal analytics"
+        status: approved
+
+  - name: "Agency Metrics"
+    stats:
+      - id: years-experience
+        value: "10+"
+        label: "Years of marketing experience"
+        source: "Company history"
+        status: approved

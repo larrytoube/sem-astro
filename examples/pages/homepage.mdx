@@ -1,0 +1,49 @@
+{/*
+  HOMEPAGE REFERENCE — Sharp End Marketing
+
+  This example shows the required homepage structure.
+  See .specs/domain.md for section requirements.
+*/}
+
+import SEMLayout from '../../src/layouts/SEMLayout.astro'
+import SEMHero from '../../src/components/sem/SEMHero.astro'
+import SEMSectionHeader from '../../src/components/sem/SEMSectionHeader.astro'
+import SEMServiceCard from '../../src/components/sem/SEMServiceCard.astro'
+import SEMProcessStep from '../../src/components/sem/SEMProcessStep.astro'
+import SEMCaseStudyCard from '../../src/components/sem/SEMCaseStudyCard.astro'
+import SEMCTASection from '../../src/components/sem/SEMCTASection.astro'
+
+{/* SECTION 1: Hero — Assertion title with CTA */}
+<SEMHero
+  title="Your partner in success"
+  subtitle="Focus on your business, leave the marketing to us"
+  ctaText="Get Started"
+  ctaHref="/contact"
+/>
+
+{/* SECTION 2: Services Grid — All 7 services as numbered cards */}
+{/* Use SEMServiceCard with number, title, description, href props */}
+{/* Grid layout: sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 */}
+
+{/* SECTION 3: Why Sharp End — Storytelling positioning */}
+{/* Two-column layout: text left, quote card right */}
+{/* Key message: "Where Storytelling is Central" */}
+
+{/* SECTION 4: Our Process — 3-phase methodology */}
+{/* Use SEMProcessStep with number, title, description */}
+{/* Steps: 1. Discover & Strategize, 2. Create & Execute, 3. Analyze & Optimize */}
+
+{/* SECTION 5: Success Stories — Featured case studies */}
+{/* Use SEMCaseStudyCard with title, client, category, description, href */}
+{/* Show 3 featured: SmartyPantz, Jack Storms, Smithwood Builders */}
+
+{/* SECTION 6: Blog Preview — Recent articles */}
+{/* Link to /blog */}
+
+{/* SECTION 7: CTA — Full-width dark navy section */}
+<SEMCTASection
+  title="Ready to Elevate Your Brand?"
+  description="Partner with Sharp End and let's create something extraordinary together."
+  ctaText="Get in Touch"
+  ctaHref="/contact"
+/>

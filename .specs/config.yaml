@@ -1,0 +1,22 @@
+# Sharp End Marketing Site - Integration Configuration
+
+linear:
+  team_id: "DEM"
+  project_id: "Emission-Asset-Prioritization"
+  labels:
+    content: "content"
+    design: "design"
+    engineering: "engineering"
+    seo: "seo"
+
+github:
+  repo: "larrytoube/sem-astro"
+  branch_prefix: "content/"
+  required_checks:
+    - "build"
+    - "astro-check"
+
+vercel:
+  project: "sem-astro"
+  production_branch: "main"
+  preview_branches: true
