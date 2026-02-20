@@ -14,9 +14,9 @@ importers:
       '@astrojs/react':
         specifier: ^4
         version: 4.4.2(@types/node@22.19.11)(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(jiti@2.6.1)(lightningcss@1.31.1)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)(tsx@4.21.0)(yaml@2.8.2)
-      '@fontsource-variable/open-sans':
-        specifier: ^5
-        version: 5.2.7
+      '@fontsource-variable/inter':
+        specifier: ^5.2.8
+        version: 5.2.8
       '@fontsource/comfortaa':
         specifier: ^5
         version: 5.2.8
@@ -539,8 +539,8 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@fontsource-variable/open-sans@5.2.7':
-    resolution: {integrity: sha512-wzCLm2STuekK9Fz58DiuBnk4GgJpvvVtAU85a4b06ACNG/UsVjQcCvkUd6R/ETlHfsaykCUZamLRvSXg4KtWuA==}
+  '@fontsource-variable/inter@5.2.8':
+    resolution: {integrity: sha512-kOfP2D+ykbcX/P3IFnokOhVRNoTozo5/JxhAIVYLpea/UBmCQ/YWPBfWIDuBImXX/15KH+eKh4xpEUyS2sQQGQ==}
 
   '@fontsource/comfortaa@5.2.8':
     resolution: {integrity: sha512-S5oyMR0QzBPIJvS52W8Xgv9IcJkScIHgHZ7R2lqwW9nVD10mlIzunNPrIrAuU6kES+A35tc52UdQ9tunL1CWeg==}
@@ -2986,7 +2986,7 @@ snapshots:
   '@esbuild/win32-x64@0.27.3':
     optional: true
 
-  '@fontsource-variable/open-sans@5.2.7': {}
+  '@fontsource-variable/inter@5.2.8': {}
 
   '@fontsource/comfortaa@5.2.8': {}
 

@@ -75,21 +75,27 @@ export default function ContactForm() {
   if (submitted) {
     return (
       <div className="text-center py-8" role="status">
-        <p className="font-heading text-h2 font-bold text-accent-blue">
+        <p className="font-heading text-h2 font-medium" style={{ color: '#086d72' }}>
           Thank you for reaching out
         </p>
-        <p className="mt-4 font-body text-lead text-text-body">
+        <p className="mt-4 font-body text-lead" style={{ color: '#525866' }}>
           We have received your message and will get back to you within one business day.
         </p>
       </div>
     )
   }
 
+  const inputClasses = "mt-1 block w-full rounded-lg border px-4 py-2.5 font-body text-sm transition-colors focus:outline-none focus:ring-2"
+  const inputStyle = {
+    borderColor: 'rgba(9, 14, 29, 0.1)',
+    color: '#0A0D14',
+  }
+
   return (
     <form onSubmit={handleSubmit} noValidate>
       <div className="space-y-6">
         <div>
-          <label htmlFor="contact-name" className="block font-body text-sm font-semibold text-text-dark">
+          <label htmlFor="contact-name" className="block font-body text-sm font-medium" style={{ color: '#0A0D14' }}>
             Name
           </label>
           <input
@@ -101,7 +107,8 @@ export default function ContactForm() {
             onChange={e => updateField('name', e.target.value)}
             aria-invalid={errors.name ? 'true' : undefined}
             aria-describedby={errors.name ? 'contact-name-error' : undefined}
-            className="mt-1 block w-full rounded-lg border border-border px-4 py-2.5 font-body text-sm text-text-dark transition-colors focus:border-accent-blue focus:outline-none focus:ring-2 focus:ring-accent-blue/20"
+            className={inputClasses}
+            style={{ ...inputStyle, '--tw-ring-color': 'rgba(8, 109, 114, 0.2)' } as React.CSSProperties}
           />
           {errors.name && (
             <p id="contact-name-error" className="mt-1 font-body text-sm text-danger" role="alert">
@@ -111,7 +118,7 @@ export default function ContactForm() {
         </div>
 
         <div>
-          <label htmlFor="contact-email" className="block font-body text-sm font-semibold text-text-dark">
+          <label htmlFor="contact-email" className="block font-body text-sm font-medium" style={{ color: '#0A0D14' }}>
             Email
           </label>
           <input
@@ -123,7 +130,8 @@ export default function ContactForm() {
             onChange={e => updateField('email', e.target.value)}
             aria-invalid={errors.email ? 'true' : undefined}
             aria-describedby={errors.email ? 'contact-email-error' : undefined}
-            className="mt-1 block w-full rounded-lg border border-border px-4 py-2.5 font-body text-sm text-text-dark transition-colors focus:border-accent-blue focus:outline-none focus:ring-2 focus:ring-accent-blue/20"
+            className={inputClasses}
+            style={inputStyle}
           />
           {errors.email && (
             <p id="contact-email-error" className="mt-1 font-body text-sm text-danger" role="alert">
@@ -133,8 +141,8 @@ export default function ContactForm() {
         </div>
 
         <div>
-          <label htmlFor="contact-phone" className="block font-body text-sm font-semibold text-text-dark">
-            Phone <span className="font-normal text-text-body/60">(optional)</span>
+          <label htmlFor="contact-phone" className="block font-body text-sm font-medium" style={{ color: '#0A0D14' }}>
+            Phone <span className="font-normal" style={{ color: 'rgba(10, 13, 20, 0.45)' }}>(optional)</span>
           </label>
           <input
             id="contact-phone"
@@ -142,12 +150,13 @@ export default function ContactForm() {
             autoComplete="tel"
             value={formData.phone}
             onChange={e => updateField('phone', e.target.value)}
-            className="mt-1 block w-full rounded-lg border border-border px-4 py-2.5 font-body text-sm text-text-dark transition-colors focus:border-accent-blue focus:outline-none focus:ring-2 focus:ring-accent-blue/20"
+            className={inputClasses}
+            style={inputStyle}
           />
         </div>
 
         <div>
-          <label htmlFor="contact-message" className="block font-body text-sm font-semibold text-text-dark">
+          <label htmlFor="contact-message" className="block font-body text-sm font-medium" style={{ color: '#0A0D14' }}>
             Message
           </label>
           <textarea
@@ -158,7 +167,8 @@ export default function ContactForm() {
             onChange={e => updateField('message', e.target.value)}
             aria-invalid={errors.message ? 'true' : undefined}
             aria-describedby={errors.message ? 'contact-message-error' : undefined}
-            className="mt-1 block w-full rounded-lg border border-border px-4 py-2.5 font-body text-sm text-text-dark transition-colors focus:border-accent-blue focus:outline-none focus:ring-2 focus:ring-accent-blue/20"
+            className={inputClasses}
+            style={inputStyle}
           />
           {errors.message && (
             <p id="contact-message-error" className="mt-1 font-body text-sm text-danger" role="alert">
@@ -173,16 +183,22 @@ export default function ContactForm() {
             type="checkbox"
             checked={formData.requestAudit}
             onChange={e => updateField('requestAudit', e.target.checked)}
-            className="h-4 w-4 rounded border-border text-accent-blue focus:ring-accent-blue/20"
+            className="h-4 w-4 rounded"
+            style={{ accentColor: '#086d72' }}
           />
-          <label htmlFor="contact-audit" className="font-body text-sm text-text-body">
+          <label htmlFor="contact-audit" className="font-body text-sm" style={{ color: '#525866' }}>
             Request a free mini audit of my website &amp; social media
           </label>
         </div>
 
         <button
           type="submit"
-          className="w-full rounded-lg bg-accent-blue px-6 py-3 font-body text-sm font-bold text-white transition-colors hover:bg-accent-blue-dark focus:outline-none focus:ring-2 focus:ring-accent-blue focus:ring-offset-2"
+          className="w-full font-body text-sm font-medium text-white transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2"
+          style={{
+            backgroundColor: 'rgba(8, 109, 114, 0.82)',
+            padding: '0.75rem 1.5rem',
+            borderRadius: '0px 7px',
+          }}
         >
           Send Message
         </button>

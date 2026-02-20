@@ -57,17 +57,20 @@ We are a boutique digital marketing agency that connects clients with their targ
 
 ### Fonts
 
-- **Open Sans** — Body text and headings. Clean, professional, highly readable.
-- **Comfortaa** — Accent/logo font. Rounded, friendly, distinctive.
+- **Inter** — Body text. Clean, professional, highly readable.
+- **Comfortaa** — Headings, accent, and logo font. Rounded, friendly, distinctive. Weight 500 for headings.
 
 ### Colors
 
-- Accent Blue: #4d65ff — Primary brand accent
-- Dark Navy: #1a1a2e — Headers, dark backgrounds
-- Text Dark: #1a1a1a — Heading text
-- Text Body: #333333 — Body text
-- Background: #ffffff (main), #f5f5f5 (sections)
-- Border: #e5e5e5
+- Teal: rgba(8, 109, 114, 0.82) — Primary brand accent (buttons)
+- Teal Solid: #086d72 — Links, highlights
+- Teal Dark: #013941 — Footer, CTA sections, dark backgrounds
+- Teal Accent: #009688 — Decorative text highlights
+- Heading: #0A0D14 — Heading text
+- Text Body: #525866 — Body text
+- Text Muted: rgba(10, 13, 20, 0.45) — Secondary text
+- Background: #ffffff (main), #F6F8FA (sections)
+- Border: rgba(9, 14, 29, 0.1)
 
 ### Design Principles
 

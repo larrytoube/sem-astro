@@ -2,7 +2,7 @@
  * Brand consistency checks for Sharp End Marketing.
  *
  * Scans built HTML and source files for:
- * 1. Non-brand font declarations (should use Open Sans or Comfortaa)
+ * 1. Non-brand font declarations (should use Inter or Comfortaa)
  * 2. Arbitrary hex color values (should use design tokens)
  * 3. Raw <img> tags (should use Astro <Image /> or <Picture />)
  *
@@ -27,7 +27,7 @@ interface BrandViolation {
 
 function checkFontUsage(files: string[]): BrandViolation[] {
   const violations: BrandViolation[] = []
-  const allowedFonts = ['Open Sans', 'Comfortaa', 'system-ui', 'cursive', 'sans-serif']
+  const allowedFonts = ['Inter', 'Inter Variable', 'Comfortaa', 'system-ui', 'cursive', 'sans-serif']
   const fontFamilyPattern = /font-family\s*:\s*([^;}"]+)/gi
 
   for (const file of files) {
@@ -56,7 +56,7 @@ function checkFontUsage(files: string[]): BrandViolation[] {
             file: relative(process.cwd(), file),
             line: i + 1,
             rule: 'brand/font',
-            message: 'Use Open Sans or Comfortaa (Sharp End Marketing brand fonts)',
+            message: 'Use Inter or Comfortaa (Sharp End Marketing brand fonts)',
             snippet: line.trim().slice(0, 120),
           })
         }

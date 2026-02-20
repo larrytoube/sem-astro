@@ -16,6 +16,7 @@ const posts = [
   description="Marketing insights, strategies, and tips from the Sharp End Marketing team."
 >
   <SEMHero
+    label="Insights"
     title="Blog"
     subtitle="Insights and strategies to help you grow"
   />
@@ -25,8 +26,8 @@ const posts = [
       <div class="grid gap-8 md:grid-cols-2">
         {posts.map(post => (
           <article class="rounded-xl border border-border bg-white p-6 shadow-card">
-            <span class="text-xs font-bold uppercase tracking-wider text-accent-blue">{post.category}</span>
-            <h2 class="mt-2 text-h4 font-bold text-text-dark">{post.title}</h2>
+            <span class="text-xs font-bold uppercase tracking-wider text-teal-solid">{post.category}</span>
+            <h2 class="mt-2 text-h4 font-medium text-heading">{post.title}</h2>
             <p class="mt-1 text-caption text-text-body/60">{post.date}</p>
             <p class="mt-3 text-sm leading-relaxed text-text-body">{post.excerpt}</p>
           </article>

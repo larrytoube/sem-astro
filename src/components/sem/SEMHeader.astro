@@ -11,22 +11,28 @@ const navLinks = [
 const currentPath = Astro.url.pathname
 ---
 
-<header class="sticky top-0 z-50 bg-white shadow-nav">
+<header class="sticky top-0 z-50 bg-white/95 backdrop-blur-sm">
   <nav class="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
-    <a href="/" class="font-accent text-2xl font-bold text-dark-navy">
-      Sharp End
+    <!-- Logo -->
+    <a href="/" class="flex items-center gap-2">
+      <div class="flex h-8 w-8 items-center justify-center rounded-full border-2 border-teal-solid">
+        <svg class="h-4 w-4 text-teal-solid" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+        </svg>
+      </div>
+      <span class="font-accent text-lg font-bold tracking-tight text-heading">SHARP END MARKETING</span>
     </a>
 
     <!-- Desktop nav -->
-    <ul class="hidden items-center gap-8 md:flex">
+    <ul class="hidden items-center gap-6 lg:flex">
       {navLinks.map(link => (
         <li>
           <a
             href={link.href}
             class:list={[
-              'text-sm font-semibold transition-colors hover:text-accent-blue',
+              'text-sm font-medium transition-colors hover:text-teal-solid',
               currentPath === link.href || (link.href !== '/' && currentPath.startsWith(link.href))
-                ? 'text-accent-blue'
+                ? 'text-teal-solid'
                 : 'text-text-body',
             ]}
           >
@@ -36,14 +42,22 @@ const currentPath = Astro.url.pathname
       ))}
     </ul>
 
+    <!-- CTA button -->
+    <a href="/contact" class="btn-sem hidden lg:inline-flex">
+      Get Started
+      <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+      </svg>
+    </a>
+
     <!-- Mobile menu button -->
     <button
       id="mobile-menu-btn"
-      class="flex items-center md:hidden"
+      class="flex items-center lg:hidden"
       aria-label="Toggle menu"
       aria-expanded="false"
     >
-      <svg class="h-6 w-6 text-text-dark" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <svg class="h-6 w-6 text-heading" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path id="menu-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
         <path id="close-icon" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
       </svg>
@@ -51,16 +65,16 @@ const currentPath = Astro.url.pathname
   </nav>
 
   <!-- Mobile menu -->
-  <div id="mobile-menu" class="hidden border-t border-border bg-white md:hidden">
+  <div id="mobile-menu" class="hidden border-t border-border bg-white lg:hidden">
     <ul class="space-y-1 px-6 py-4">
       {navLinks.map(link => (
         <li>
           <a
             href={link.href}
             class:list={[
-              'block rounded-lg px-3 py-2 text-sm font-semibold transition-colors hover:bg-bg-light',
+              'block px-3 py-2 text-sm font-medium transition-colors hover:text-teal-solid',
               currentPath === link.href || (link.href !== '/' && currentPath.startsWith(link.href))
-                ? 'text-accent-blue'
+                ? 'text-teal-solid'
                 : 'text-text-body',
             ]}
           >
@@ -68,6 +82,14 @@ const currentPath = Astro.url.pathname
           </a>
         </li>
       ))}
+      <li class="pt-2">
+        <a href="/contact" class="btn-sem w-full justify-center">
+          Get Started
+          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" class="h-4 w-4">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+          </svg>
+        </a>
+      </li>
     </ul>
   </div>
 </header>

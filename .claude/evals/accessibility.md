@@ -52,7 +52,7 @@ All links have descriptive text that makes sense out of context.
 ### 5. Color and Contrast
 
 - [ ] **Text contrast meets WCAG AA:** 4.5:1 ratio for normal text, 3:1 for large text (18px+ or 14px bold)
-- [ ] **Accent blue (#4d65ff) contrast verified:** This color must meet AA on its background
+- [ ] **Teal accent (#086d72) contrast verified:** This color must meet AA on its background
 - [ ] **Information not conveyed by color alone:** Error states, status indicators have text or icon in addition to color
 - [ ] **Focus indicators visible:** Interactive elements have visible focus outlines with sufficient contrast
 
@@ -77,7 +77,7 @@ All links have descriptive text that makes sense out of context.
 2. Compare visual layout to DOM order for reading sequence
 3. Inspect interactive elements for correct ARIA usage
 4. Review all link text for descriptive quality
-5. Verify color contrast on text elements, especially accent blue usage
+5. Verify color contrast on text elements, especially teal accent usage
 6. Confirm semantic HTML structure (headings, landmarks, lists, forms)
 
 ## Reference

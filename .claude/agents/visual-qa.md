@@ -23,11 +23,12 @@ Review screenshots provided as input. These may be full-page screenshots, compon
 - Verify all visible colors match the design token palette from `.specs/design.md`
 - Flag any arbitrary color values that do not correspond to a defined token
 - Check background/foreground combinations against the token system
-- Accent blue (#4d65ff) should be used for CTAs, links, and highlights
-- Dark navy (#1a1a2e) for footer and dark sections only
+- Teal (`rgba(8,109,114,0.82)` / `#086d72`) should be used for CTAs, links, and highlights
+- Dark teal (`#013941`) for footer and dark sections only
+- Accent teal (`#009688`) for decorative text accents
 
 ### Typography Verification
-- Verify correct font families: Open Sans Variable for body/headings, Comfortaa for accent/logo
+- Verify correct font families: Inter Variable for body, Comfortaa for headings/accent/logo
 - Check that heading styles match their defined component styles
 - Ensure body text uses the correct line height and letter spacing
 

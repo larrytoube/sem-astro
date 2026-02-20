@@ -13,7 +13,7 @@ const { quote, author, company } = Astro.props
     &ldquo;{quote}&rdquo;
   </p>
   <footer class="mt-4">
-    <p class="font-bold text-text-dark">{author}</p>
-    {company && <p class="text-sm text-text-body/70">{company}</p>}
+    <p class="font-medium text-heading">{author}</p>
+    {company && <p class="text-sm text-text-muted">{company}</p>}
   </footer>
 </blockquote>

@@ -22,7 +22,7 @@ If any check fails, fix the issue before committing. This mirrors exactly what C
 - Static-first: pages are marketing content, not application UI
 - Performance is critical: zero unnecessary JS
 - SEO matters: semantic HTML, meta tags, Open Graph
-- Light, professional aesthetic with brand accent blue
+- Light, professional aesthetic with brand teal accent
 
 ## Architecture: Islands
 
@@ -35,11 +35,12 @@ If any check fails, fix the issue before committing. This mirrors exactly what C
 ### Brand Compliance
 - Design tokens are defined in `src/styles/global.css` `@theme` block
 - Do NOT use arbitrary Tailwind values for brand colors — use SEM token utilities only
-- **Colors**: `--accent-blue` (#4d65ff), `--dark-navy` (#1a1a2e), `--text-dark` (#1a1a1a), `--text-body` (#333333), `--bg-white` (#ffffff), `--bg-light` (#f5f5f5)
-- **Fonts**: Open Sans Variable (headings + body), Comfortaa (accent/logo)
+- **Colors**: `--teal` (rgba(8,109,114,0.82)), `--teal-solid` (#086d72), `--teal-dark` (#013941), `--teal-accent` (#009688), `--heading` (#0A0D14), `--text-body` (#525866), `--text-muted` (rgba(10,13,20,0.45)), `--bg-white` (#ffffff), `--bg-light` (#F6F8FA), `--border` (rgba(9,14,29,0.1))
+- **Fonts**: Inter Variable (body), Comfortaa (headings/accent/logo)
 - **Light theme**: All pages use light backgrounds (`--bg-white`, `--bg-light`)
-- Accent blue (#4d65ff) used for CTAs, links, and highlights
-- Dark navy (#1a1a2e) used for footer, hero overlays, and CTA sections
+- Teal (`--teal`, `--teal-solid`) used for CTAs, links, and highlights
+- Dark teal (`--teal-dark` #013941) used for footer, hero overlays, and CTA sections
+- Buttons use asymmetric border-radius: `0px 7px` (`.btn-sem` class)
 - Use SEM section components (`SEMSectionHeader`, `SEMHero`, `SEMServiceCard`, `SEMCTASection`, etc.) for page assembly
 
 ### Image Optimization

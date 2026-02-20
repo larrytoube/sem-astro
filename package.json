@@ -11,7 +11,7 @@
   "dependencies": {
     "@astrojs/mdx": "^4",
     "@astrojs/react": "^4",
-    "@fontsource-variable/open-sans": "^5",
+    "@fontsource-variable/inter": "^5.2.8",
     "@fontsource/comfortaa": "^5",
     "@tailwindcss/vite": "^4",
     "astro": "^5",
@@ -31,6 +31,9 @@
   },
   "packageManager": "pnpm@10.28.2",
   "pnpm": {
-    "onlyBuiltDependencies": ["esbuild", "sharp"]
+    "onlyBuiltDependencies": [
+      "esbuild",
+      "sharp"
+    ]
   }
 }

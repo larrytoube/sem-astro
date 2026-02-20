@@ -70,9 +70,10 @@ Correct component usage, design token compliance.
 | 1 | Ignores design system entirely |
 
 **What to check:**
-- Accent blue (#4d65ff) for CTAs and links
-- Dark navy (#1a1a2e) for footer and dark sections
-- font-heading (Open Sans) for headings, font-body (Open Sans) for body, font-accent (Comfortaa) for logo/accent
+- Teal (`rgba(8,109,114,0.82)` / `#086d72`) for CTAs and links
+- Dark teal (`#013941`) for footer and dark sections
+- font-heading (Comfortaa) for headings, font-body (Inter Variable) for body, font-accent (Comfortaa) for logo/accent
+- Buttons use asymmetric border-radius: `0px 7px`
 - Design token utilities used (no arbitrary Tailwind values)
 - SEM section components used where available
 
