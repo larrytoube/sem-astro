@@ -1,0 +1,57 @@
+---
+import { generateMeta } from '../../lib/seo'
+
+interface Props {
+  title: string
+  description: string
+  url?: string
+  ogImage?: string
+  canonical?: string
+  noIndex?: boolean
+  type?: 'website' | 'article'
+  publishedAt?: Date
+  updatedAt?: Date
+  author?: string
+}
+
+const {
+  title,
+  description,
+  url = Astro.url.href,
+  ogImage,
+  canonical,
+  noIndex = false,
+  type = 'website',
+  publishedAt,
+  updatedAt,
+  author,
+} = Astro.props
+
+const metaTags = generateMeta({
+  title,
+  description,
+  url,
+  ogImage,
+  noIndex,
+  type,
+  publishedAt,
+  updatedAt,
+  author,
+})
+
+const canonicalUrl = canonical ?? url
+---
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="icon" href="/favicon.ico" />
+<link rel="canonical" href={canonicalUrl} />
+<meta name="generator" content={Astro.generator} />
+<title>{title} | Sharp End Marketing</title>
+{metaTags.map(tag => (
+  tag.property
+    ? <meta property={tag.property} content={tag.content} />
+    : <meta name={tag.name} content={tag.content} />
+))}
+<slot />

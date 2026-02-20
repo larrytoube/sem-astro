@@ -1,0 +1,90 @@
+---
+import SEMLayout from '../layouts/SEMLayout.astro'
+import SEMHero from '../components/sem/SEMHero.astro'
+import SEMTeamCard from '../components/sem/SEMTeamCard.astro'
+import SEMCTASection from '../components/sem/SEMCTASection.astro'
+import SEMSectionHeader from '../components/sem/SEMSectionHeader.astro'
+
+const qualifyingQuestions = [
+  { question: 'Do you have excess capacity within your business?', answer: "Most clients are looking for leads, sales or similar. We want to make sure you can handle the influx of inquiries." },
+  { question: 'How motivated are you to fill it?', answer: "We're pretty good at figuring out if you are or aren't. We're not looking to convince anyone marketing is a good idea, there are enough people out there that know." },
+  { question: 'Are you/your team committed to being a part of the process?', answer: "We understand you're busy but you are often the key to success. So we'll schedule photo/video shoots, interviews, etc around your schedule. We need quality content to do quality marketing." },
+  { question: 'Long-term Relationships', answer: "We do take on smaller jobs when it works for us, but our priority is to work with clients who see value in marketing and require ongoing services." },
+]
+
+const team = [
+  { name: 'Chris Ricard', role: 'Serial Entrepreneur, Always Marketing Strategy First!' },
+  { name: 'Larry Toube', role: 'Design Thinking, Crafting Ideas into Impactful Realities' },
+]
+---
+
+<SEMLayout
+  title="About Us"
+  description="Learn about Sharp End Marketing — a boutique digital marketing agency on Vancouver's North Shore focused on brand strategy and storytelling."
+>
+  <!-- Hero -->
+  <SEMHero
+    title="Less really is more"
+    subtitle="We turn complexity into clarity, strategy into success."
+  />
+
+  <!-- About -->
+  <section class="px-6 py-20">
+    <div class="mx-auto max-w-4xl">
+      <p class="text-body-lg leading-relaxed text-text-body">
+        We are a boutique agency focused on working with a small number of clients who see the value of investing in marketing to build a brand while receiving a return on investment. We enjoy what we do and we want to work with people who enjoy what they do.
+      </p>
+    </div>
+  </section>
+
+  <!-- Crafting Tomorrow's Brands -->
+  <section class="bg-bg-light px-6 py-20">
+    <div class="mx-auto max-w-7xl">
+      <SEMSectionHeader title="Crafting Tomorrow's Brands Today" />
+      <div class="mt-12 grid gap-8 md:grid-cols-2">
+        {qualifyingQuestions.map(item => (
+          <div class="rounded-xl bg-white p-6 shadow-card">
+            <h3 class="text-h4 font-bold text-text-dark">{item.question}</h3>
+            <p class="mt-3 text-sm leading-relaxed text-text-body">{item.answer}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Sharp End -->
+  <section class="px-6 py-20">
+    <div class="mx-auto max-w-4xl">
+      <h2 class="font-accent text-h2 font-bold text-text-dark text-center">Why Sharp End Marketing?</h2>
+      <p class="mt-6 text-body-lg leading-relaxed text-text-body">
+        We are your outsourced marketing department. If you do all the calculations, it's probably cheaper to contract out to us than have a part-time or full-time in-house employee.
+      </p>
+      <p class="mt-4 text-body-lg leading-relaxed text-text-body">
+        Content is KING. If you develop the right content that is relevant, engaging and dare we say entertaining to your prospective and existing customers, your company will reap rewards for a long time to come.
+      </p>
+    </div>
+  </section>
+
+  <!-- Team -->
+  <section class="bg-bg-light px-6 py-20">
+    <div class="mx-auto max-w-7xl">
+      <SEMSectionHeader title="Meet the Team" />
+      <div class="mt-12 grid gap-8 md:grid-cols-2 max-w-2xl mx-auto">
+        {team.map(member => (
+          <SEMTeamCard {...member} />
+        ))}
+      </div>
+      <p class="mt-8 text-center text-sm text-text-body/70">
+        Our offices are located deep in the forested mountains on Vancouver's North Shore where we constantly find inspiration while at play.
+      </p>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <SEMCTASection
+    title="Ready to Work Together?"
+    description="Let's talk about how we can help your business grow."
+    ctaText="Get in Touch"
+    ctaHref="/contact"
+  />
+</SEMLayout>

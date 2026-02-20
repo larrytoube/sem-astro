@@ -1,0 +1,71 @@
+---
+import SEMLayout from '../../layouts/SEMLayout.astro'
+import SEMHero from '../../components/sem/SEMHero.astro'
+import SEMCTASection from '../../components/sem/SEMCTASection.astro'
+
+const offerings = [
+  {
+    title: 'Google Ads Management',
+    description: 'Reach customers actively searching for your products and services with targeted search and display campaigns.',
+  },
+  {
+    title: 'Meta Ads Campaigns',
+    description: 'Engage audiences on Facebook and Instagram with creative ad campaigns that drive awareness and conversions.',
+  },
+  {
+    title: 'Retargeting Strategies',
+    description: 'Re-engage visitors who have already shown interest in your brand and guide them toward conversion.',
+  },
+  {
+    title: 'Budget Optimization',
+    description: 'Maximize your return on ad spend with continuous testing, analysis, and bid strategy refinement.',
+  },
+]
+---
+
+<SEMLayout
+  title="Paid Advertising"
+  description="Targeted paid advertising campaigns that deliver precision results. Stop guessing and start reaching the right audience."
+>
+  <!-- Hero -->
+  <SEMHero
+    title="Paid Advertising"
+    subtitle="Stop guessing and start targeting — precision advertising."
+  />
+
+  <!-- What We Offer -->
+  <section class="px-6 py-20">
+    <div class="mx-auto max-w-4xl">
+      <h2 class="font-accent text-h2 font-bold text-text-dark">What We Offer</h2>
+      <ul class="mt-8 space-y-4">
+        {offerings.map(item => (
+          <li class="flex gap-3">
+            <span class="mt-1 text-accent-blue font-bold">&#10003;</span>
+            <div>
+              <h3 class="font-bold text-text-dark">{item.title}</h3>
+              <p class="mt-1 text-sm text-text-body">{item.description}</p>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- Why This Matters -->
+  <section class="bg-bg-light px-6 py-20">
+    <div class="mx-auto max-w-4xl text-center">
+      <h2 class="font-accent text-h2 font-bold text-text-dark">Why This Matters</h2>
+      <p class="mt-6 text-body-lg leading-relaxed text-text-body">
+        Paid advertising puts your brand in front of the right people at exactly the right moment. When managed properly, it is one of the fastest ways to generate qualified leads and revenue. We take the guesswork out of ad spend and focus every dollar on measurable outcomes.
+      </p>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <SEMCTASection
+    title="Let's Discuss Your Project"
+    description="Ready to take your marketing to the next level?"
+    ctaText="Contact Us"
+    ctaHref="/contact"
+  />
+</SEMLayout>

@@ -1,0 +1,128 @@
+---
+import SEMLayout from '../layouts/SEMLayout.astro'
+import SEMHero from '../components/sem/SEMHero.astro'
+import SEMSectionHeader from '../components/sem/SEMSectionHeader.astro'
+import SEMServiceCard from '../components/sem/SEMServiceCard.astro'
+import SEMProcessStep from '../components/sem/SEMProcessStep.astro'
+import SEMCaseStudyCard from '../components/sem/SEMCaseStudyCard.astro'
+import SEMCTASection from '../components/sem/SEMCTASection.astro'
+
+const services = [
+  { number: '01', title: 'Brand Strategy', description: 'Plan smarter, not harder. Strategy is the bridge between dreams and results.', href: '/services/brand-strategy' },
+  { number: '02', title: 'Digital Marketing', description: 'Digital solutions that drive real-world results. Let us tailor a solution for you.', href: '/services/digital-marketing' },
+  { number: '03', title: 'SEO', description: 'Be found by those who matter most for organic growth — sustainable results.', href: '/services/seo' },
+  { number: '04', title: 'Social Media Marketing', description: 'Where your brand story comes alive and sparks engagement. Inspire and grow your digital community.', href: '/services/social-media' },
+  { number: '05', title: 'Paid Advertising', description: 'Stop guessing and start targeting — precision advertising.', href: '/services/paid-advertising' },
+  { number: '06', title: 'Creative Design', description: 'From concept to completion; websites, video, graphics and photography, we have you covered.', href: '/services/creative-design' },
+  { number: '07', title: 'AI Workflow Optimization', description: 'We design AI-powered applications that will streamline processes and systems. Saving time and money.', href: '/services/ai-workflow' },
+]
+
+const processSteps = [
+  { number: 1, title: 'Discover & Strategize', description: 'We dive deep into understanding your vision, brand, audience, goals, competition and overall environment. We then craft a custom strategy that aligns with your vision.' },
+  { number: 2, title: 'Create & Execute', description: 'Our team brings your strategy to life with innovative ideas, on-point storylines, content, and designs that resonate with your audience.' },
+  { number: 3, title: 'Analyze & Optimize', description: 'We continuously monitor the performance of your campaigns, making data-driven adjustments to ensure optimal results.' },
+]
+
+const caseStudies = [
+  { title: 'SmartyPantz', client: 'SmartyPantz', category: 'Brand Strategy', description: 'SmartyPantz Escape Rooms was the first escape room experience provider in Gastown, located in the heart of Vancouver.', href: '/case-studies/smartypantz' },
+  { title: 'Optical Glass Sculptures', client: 'Jack Storms', category: 'Brand Strategy', description: 'Our team redefined their brand strategy, focusing on luxury and exclusivity, resulting in a 40% increase in customer engagement.', href: '/case-studies/jack-storms' },
+  { title: 'Smithwood Builders', client: 'Smithwood Builders', category: 'Digital Marketing', description: 'We developed a brand position strategy and executed a targeted digital marketing campaign that led to a 30% increase in enrollments.', href: '/case-studies/smithwood-builders' },
+]
+---
+
+<SEMLayout title="Your Partner in Success">
+  <!-- Hero -->
+  <SEMHero
+    title="Your partner in success"
+    subtitle="Focus on your business, leave the marketing to us"
+    ctaText="Get Started"
+    ctaHref="/contact"
+  />
+
+  <!-- Services -->
+  <section class="px-6 py-20">
+    <div class="mx-auto max-w-7xl">
+      <SEMSectionHeader
+        title="Digital Marketing & Social Media"
+        subtitle="Comprehensive services tailored to grow your brand and connect with your audience"
+      />
+      <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        {services.map(service => (
+          <SEMServiceCard {...service} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Sharp End -->
+  <section class="bg-bg-light px-6 py-20">
+    <div class="mx-auto max-w-7xl">
+      <div class="grid items-center gap-12 md:grid-cols-2">
+        <div>
+          <h2 class="font-accent text-h2 font-bold text-text-dark">Where Storytelling is Central</h2>
+          <p class="mt-6 text-body-lg leading-relaxed text-text-body">
+            At Sharp End Marketing our goal is to help our clients connect with their target audience in a meaningful way, highlighting their unique value propositions, thus creating a reason for that audience to engage.
+          </p>
+          <p class="mt-4 text-body-lg leading-relaxed text-text-body">
+            We believe marketing starts with strategy and finishes with storytelling.
+          </p>
+        </div>
+        <div class="flex items-center justify-center rounded-xl bg-white p-12 shadow-card">
+          <p class="font-accent text-h3 text-center text-text-body/60">
+            Focus on building your business. Leave the marketing to us.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Our Process -->
+  <section class="px-6 py-20">
+    <div class="mx-auto max-w-7xl">
+      <SEMSectionHeader
+        title="We're Big on Keeping it Simple!"
+        subtitle="There is no magic here, just a well thought out plan, hard work and a dash of luck. Here's how we do it:"
+      />
+      <div class="mt-12 grid gap-12 md:grid-cols-3">
+        {processSteps.map(step => (
+          <SEMProcessStep {...step} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Success Stories -->
+  <section class="bg-bg-light px-6 py-20">
+    <div class="mx-auto max-w-7xl">
+      <SEMSectionHeader title="Success Stories" />
+      <div class="mt-12 grid gap-8 md:grid-cols-3">
+        {caseStudies.map(study => (
+          <SEMCaseStudyCard {...study} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Blog Preview -->
+  <section class="px-6 py-20">
+    <div class="mx-auto max-w-7xl">
+      <SEMSectionHeader
+        title="From Our Blog"
+        subtitle="Insights and strategies to help you grow"
+      />
+      <div class="mt-8 text-center">
+        <a href="/blog" class="text-sm font-bold text-accent-blue hover:text-accent-blue-dark transition-colors">
+          View all posts &rarr;
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <SEMCTASection
+    title="Ready to Elevate Your Brand?"
+    description="Partner with Sharp End and let's create something extraordinary together."
+    ctaText="Get in Touch"
+    ctaHref="/contact"
+  />
+</SEMLayout>

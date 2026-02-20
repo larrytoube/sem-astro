@@ -1,0 +1,71 @@
+---
+import SEMLayout from '../../layouts/SEMLayout.astro'
+import SEMHero from '../../components/sem/SEMHero.astro'
+import SEMCTASection from '../../components/sem/SEMCTASection.astro'
+
+const offerings = [
+  {
+    title: 'Website Design',
+    description: 'Modern, responsive websites built to convert visitors into customers and reflect your brand identity.',
+  },
+  {
+    title: 'Video Production',
+    description: 'Compelling video content — from concept and scripting to filming and post-production.',
+  },
+  {
+    title: 'Graphic Design',
+    description: 'Eye-catching visuals for digital and print that communicate your message with clarity and impact.',
+  },
+  {
+    title: 'Photography Direction',
+    description: 'Professional photography direction that captures your brand, products, and people at their best.',
+  },
+]
+---
+
+<SEMLayout
+  title="Creative Design"
+  description="Creative design services from concept to completion — websites, video, graphics, and photography that bring your brand to life."
+>
+  <!-- Hero -->
+  <SEMHero
+    title="Creative Design"
+    subtitle="From concept to completion; websites, video, graphics and photography, we have you covered."
+  />
+
+  <!-- What We Offer -->
+  <section class="px-6 py-20">
+    <div class="mx-auto max-w-4xl">
+      <h2 class="font-accent text-h2 font-bold text-text-dark">What We Offer</h2>
+      <ul class="mt-8 space-y-4">
+        {offerings.map(item => (
+          <li class="flex gap-3">
+            <span class="mt-1 text-accent-blue font-bold">&#10003;</span>
+            <div>
+              <h3 class="font-bold text-text-dark">{item.title}</h3>
+              <p class="mt-1 text-sm text-text-body">{item.description}</p>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- Why This Matters -->
+  <section class="bg-bg-light px-6 py-20">
+    <div class="mx-auto max-w-4xl text-center">
+      <h2 class="font-accent text-h2 font-bold text-text-dark">Why This Matters</h2>
+      <p class="mt-6 text-body-lg leading-relaxed text-text-body">
+        Great design is not just about looking good — it is about communicating your value instantly. Whether it is a website, a video, or a social graphic, quality creative work builds trust, captures attention, and makes your brand memorable.
+      </p>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <SEMCTASection
+    title="Let's Discuss Your Project"
+    description="Ready to take your marketing to the next level?"
+    ctaText="Contact Us"
+    ctaHref="/contact"
+  />
+</SEMLayout>

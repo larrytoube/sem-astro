@@ -1,0 +1,94 @@
+name: Deploy Preview Checks
+
+on:
+  deployment_status:
+
+jobs:
+  preview-checks:
+    runs-on: ubuntu-latest
+    if: github.event.deployment_status.state == 'success' && github.event.deployment_status.environment == 'Preview'
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+
+      - name: Get preview URL
+        id: preview
+        run: |
+          BASE="${{ github.event.deployment_status.target_url }}"
+          if [ -n "${{ secrets.VERCEL_AUTOMATION_BYPASS_SECRET }}" ]; then
+            echo "url=${BASE}?x-vercel-protection-bypass=${{ secrets.VERCEL_AUTOMATION_BYPASS_SECRET }}" >> $GITHUB_OUTPUT
+            echo "base=${BASE}" >> $GITHUB_OUTPUT
+            echo "bypass=?x-vercel-protection-bypass=${{ secrets.VERCEL_AUTOMATION_BYPASS_SECRET }}" >> $GITHUB_OUTPUT
+          else
+            echo "url=${BASE}" >> $GITHUB_OUTPUT
+            echo "base=${BASE}" >> $GITHUB_OUTPUT
+            echo "bypass=" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Run Lighthouse CI
+        uses: treosh/lighthouse-ci-action@v12
+        with:
+          urls: |
+            ${{ steps.preview.outputs.url }}
+            ${{ steps.preview.outputs.base }}/services${{ steps.preview.outputs.bypass }}
+            ${{ steps.preview.outputs.base }}/contact${{ steps.preview.outputs.bypass }}
+          budgetPath: lighthouse-budget.json
+          uploadArtifacts: true
+
+      - name: Run axe-core accessibility scan
+        run: |
+          npx @axe-core/cli "${{ steps.preview.outputs.url }}" --exit --tags wcag2a,wcag2aa --stdout > axe-results.json 2>&1 || true
+
+      - name: Post results as PR comment
+        if: github.event.deployment_status.environment == 'Preview'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+
+            let axeResults = 'No results';
+            try {
+              const raw = fs.readFileSync('axe-results.json', 'utf8');
+              const data = JSON.parse(raw);
+              const violations = data.violations || [];
+              axeResults = violations.length === 0
+                ? 'No accessibility violations found'
+                : `${violations.length} violation(s) found:\n${violations.map(v => `- **${v.id}**: ${v.description} (${v.impact})`).join('\n')}`;
+            } catch {
+              axeResults = 'Could not parse axe-core results';
+            }
+
+            const body = `## Deploy Preview Checks
+
+            **Preview URL**: ${{ steps.preview.outputs.url }}
+
+            ### Accessibility (axe-core)
+            ${axeResults}
+
+            ### Performance (Lighthouse)
+            See uploaded artifacts for full Lighthouse report.
+            `;
+
+            const pulls = await github.rest.repos.listPullRequestsAssociatedWithCommit({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              commit_sha: context.sha,
+            });
+
+            if (pulls.data.length > 0) {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: pulls.data[0].number,
+                body,
+              });
+            }

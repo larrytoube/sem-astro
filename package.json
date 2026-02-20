@@ -1,0 +1,36 @@
+{
+  "name": "sem-astro",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/mdx": "^4",
+    "@astrojs/react": "^4",
+    "@fontsource-variable/open-sans": "^5",
+    "@fontsource/comfortaa": "^5",
+    "@tailwindcss/vite": "^4",
+    "astro": "^5",
+    "react": "^19",
+    "react-dom": "^19",
+    "sharp": "^0.34",
+    "tailwindcss": "^4",
+    "typescript": "^5"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9",
+    "@types/node": "^22",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "tsx": "^4",
+    "yaml": "^2"
+  },
+  "packageManager": "pnpm@10.28.2",
+  "pnpm": {
+    "onlyBuiltDependencies": ["esbuild", "sharp"]
+  }
+}

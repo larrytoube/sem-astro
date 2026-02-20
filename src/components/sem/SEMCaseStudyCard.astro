@@ -1,0 +1,29 @@
+---
+interface Props {
+  title: string
+  client: string
+  category: string
+  description: string
+  href: string
+}
+
+const { title, client, category, description, href } = Astro.props
+---
+
+<a
+  href={href}
+  class="group block overflow-hidden rounded-xl border border-border bg-white shadow-card transition-all hover:shadow-card-hover"
+>
+  <div class="h-48 bg-bg-light flex items-center justify-center">
+    <span class="font-accent text-xl text-text-body/40">{client}</span>
+  </div>
+  <div class="p-6">
+    <span class="text-xs font-bold uppercase tracking-wider text-accent-blue">{category}</span>
+    <h3 class="mt-2 text-h4 font-bold text-text-dark group-hover:text-accent-blue transition-colors">
+      {title}
+    </h3>
+    <p class="mt-2 text-sm leading-relaxed text-text-body">
+      {description}
+    </p>
+  </div>
+</a>

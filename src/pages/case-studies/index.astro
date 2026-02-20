@@ -1,0 +1,71 @@
+---
+import SEMLayout from '../../layouts/SEMLayout.astro'
+import SEMHero from '../../components/sem/SEMHero.astro'
+import SEMCTASection from '../../components/sem/SEMCTASection.astro'
+import SEMCaseStudyCard from '../../components/sem/SEMCaseStudyCard.astro'
+
+const caseStudies = [
+  {
+    title: 'SmartyPantz',
+    client: 'SmartyPantz',
+    category: 'Brand Strategy',
+    description: 'SmartyPantz Escape Rooms was the first escape room experience provider in Gastown, located in the heart of Vancouver.',
+    href: '/case-studies/smartypantz',
+  },
+  {
+    title: 'Optical Glass Sculptures',
+    client: 'Jack Storms',
+    category: 'Brand Strategy',
+    description: 'Our team redefined their brand strategy, focusing on luxury and exclusivity, resulting in a 40% increase in customer engagement.',
+    href: '/case-studies/jack-storms',
+  },
+  {
+    title: 'Smithwood Builders',
+    client: 'Smithwood Builders',
+    category: 'Digital Marketing',
+    description: 'We developed a brand position strategy and executed a targeted digital marketing campaign that led to a 30% increase in enrollments.',
+    href: '/case-studies/smithwood-builders',
+  },
+  {
+    title: 'Leopard & Roses',
+    client: 'Leopard & Roses',
+    category: 'Creative Design',
+    description: 'A creative rebrand that captured the essence of this unique lifestyle brand.',
+    href: '/case-studies/leopard-and-roses',
+  },
+  {
+    title: 'SensorUp',
+    client: 'SensorUp',
+    category: 'Digital Marketing',
+    description: 'Strategic digital marketing partnership driving brand awareness and lead generation for this IoT technology company.',
+    href: '/case-studies/sensorup',
+  },
+]
+---
+
+<SEMLayout
+  title="Case Studies"
+  description="Explore our portfolio of successful brand strategy, digital marketing, and creative design projects."
+>
+  <SEMHero
+    title="Case Studies"
+    subtitle="Real results for real brands. See how we've helped our clients grow."
+  />
+
+  <section class="px-6 py-20">
+    <div class="mx-auto max-w-7xl">
+      <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+        {caseStudies.map(study => (
+          <SEMCaseStudyCard {...study} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <SEMCTASection
+    title="Have a Similar Challenge?"
+    description="Let's discuss how we can help your brand grow."
+    ctaText="Start a Conversation"
+    ctaHref="/contact"
+  />
+</SEMLayout>

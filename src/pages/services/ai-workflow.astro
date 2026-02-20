@@ -1,0 +1,71 @@
+---
+import SEMLayout from '../../layouts/SEMLayout.astro'
+import SEMHero from '../../components/sem/SEMHero.astro'
+import SEMCTASection from '../../components/sem/SEMCTASection.astro'
+
+const offerings = [
+  {
+    title: 'Process Automation',
+    description: 'Identify repetitive tasks and automate them with AI-powered tools that save time and reduce errors.',
+  },
+  {
+    title: 'AI Tool Integration',
+    description: 'Seamlessly integrate the right AI tools into your existing tech stack for maximum impact.',
+  },
+  {
+    title: 'Workflow Analysis',
+    description: 'Map and evaluate your current workflows to find bottlenecks and opportunities for optimization.',
+  },
+  {
+    title: 'Custom AI Solutions',
+    description: 'Purpose-built AI applications tailored to your specific business processes and goals.',
+  },
+]
+---
+
+<SEMLayout
+  title="AI Workflow Optimization"
+  description="AI-powered workflow optimization that streamlines your processes and systems — saving time and money while boosting productivity."
+>
+  <!-- Hero -->
+  <SEMHero
+    title="AI Workflow Optimization"
+    subtitle="We design AI-powered applications that streamline processes and systems."
+  />
+
+  <!-- What We Offer -->
+  <section class="px-6 py-20">
+    <div class="mx-auto max-w-4xl">
+      <h2 class="font-accent text-h2 font-bold text-text-dark">What We Offer</h2>
+      <ul class="mt-8 space-y-4">
+        {offerings.map(item => (
+          <li class="flex gap-3">
+            <span class="mt-1 text-accent-blue font-bold">&#10003;</span>
+            <div>
+              <h3 class="font-bold text-text-dark">{item.title}</h3>
+              <p class="mt-1 text-sm text-text-body">{item.description}</p>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- Why This Matters -->
+  <section class="bg-bg-light px-6 py-20">
+    <div class="mx-auto max-w-4xl text-center">
+      <h2 class="font-accent text-h2 font-bold text-text-dark">Why This Matters</h2>
+      <p class="mt-6 text-body-lg leading-relaxed text-text-body">
+        AI is transforming the way businesses operate. The companies that adopt smart automation now will have a significant competitive advantage. We help you cut through the noise, identify where AI delivers real value, and implement solutions that save time and money from day one.
+      </p>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <SEMCTASection
+    title="Let's Discuss Your Project"
+    description="Ready to take your marketing to the next level?"
+    ctaText="Contact Us"
+    ctaHref="/contact"
+  />
+</SEMLayout>
