@@ -5,31 +5,49 @@ interface Props {
   category: string
   description: string
   href: string
+  image?: string
+  logo?: string
 }
 
-const { title, client, category, description, href } = Astro.props
+const { title, client, category, description, href, image, logo } = Astro.props
 ---
 
 <a
   href={href}
   class="group block overflow-hidden rounded-xl border border-border bg-white transition-all hover:shadow-card-hover"
 >
-  <div class="h-52 bg-bg-light flex items-center justify-center">
-    <span class="font-accent text-2xl text-text-muted">{client}</span>
+  <div class="relative h-56 bg-teal-dark overflow-hidden">
+    {image ? (
+      <img
+        src={image}
+        alt={title}
+        class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+        loading="lazy"
+      />
+    ) : (
+      <div class="flex h-full items-center justify-center">
+        <span class="font-accent text-2xl text-white/50">{client}</span>
+      </div>
+    )}
+    <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+    {logo && (
+      <div class="absolute bottom-4 left-4">
+        <img src={logo} alt={client} class="h-8 w-auto object-contain brightness-0 invert" loading="lazy" />
+      </div>
+    )}
+    <div class="absolute top-4 right-4 flex h-8 w-8 items-center justify-center rounded-full bg-white/20 text-white transition-colors group-hover:bg-teal">
+      <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7M17 7v10" />
+      </svg>
+    </div>
   </div>
   <div class="p-6">
-    <span class="text-label font-semibold uppercase tracking-wider text-teal-solid">{category}</span>
+    <span class="text-xs font-medium uppercase tracking-wider text-teal-solid">{category}</span>
     <h3 class="mt-2 font-accent text-h4 font-medium text-heading transition-colors group-hover:text-teal-solid">
       {title}
     </h3>
-    <p class="mt-2 text-sm leading-relaxed text-text-body">
+    <p class="mt-2 text-sm leading-relaxed text-text-body line-clamp-3">
       {description}
     </p>
-    <span class="mt-4 inline-flex items-center gap-1 text-sm font-medium text-teal-solid">
-      View Now
-      <svg class="h-4 w-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-      </svg>
-    </span>
   </div>
 </a>

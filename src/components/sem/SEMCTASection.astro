@@ -7,28 +7,54 @@ interface Props {
 }
 
 const { title, description, ctaText, ctaHref } = Astro.props
+const hasImage = Astro.slots.has('image')
 ---
 
-<section class="bg-teal-dark px-6 py-20">
-  <div class="mx-auto max-w-3xl text-center">
-    <h2 class="font-accent text-h2 font-medium text-white">
-      {title}
-    </h2>
-    {description && (
-      <p class="mt-4 text-lead text-white/70">
-        {description}
-      </p>
+<section class="bg-teal-dark px-6 py-20 overflow-hidden">
+  <div class="mx-auto max-w-7xl">
+    {hasImage ? (
+      <div class="grid items-center gap-12 md:grid-cols-2">
+        <div class="text-center md:text-left">
+          <h2 class="font-accent text-h2 font-medium text-white">
+            {title}
+          </h2>
+          {description && (
+            <p class="mt-4 text-lead text-white/70">
+              {description}
+            </p>
+          )}
+          <div class="mt-8">
+            <a href={ctaHref} class="btn-sem">
+              {ctaText}
+              <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div class="flex justify-center">
+          <slot name="image" />
+        </div>
+      </div>
+    ) : (
+      <div class="mx-auto max-w-3xl text-center">
+        <h2 class="font-accent text-h2 font-medium text-white">
+          {title}
+        </h2>
+        {description && (
+          <p class="mt-4 text-lead text-white/70">
+            {description}
+          </p>
+        )}
+        <div class="mt-8">
+          <a href={ctaHref} class="btn-sem">
+            {ctaText}
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+            </svg>
+          </a>
+        </div>
+      </div>
     )}
-    <div class="mt-8">
-      <a
-        href={ctaHref}
-        class="btn-sem"
-      >
-        {ctaText}
-        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-        </svg>
-      </a>
-    </div>
   </div>
 </section>
