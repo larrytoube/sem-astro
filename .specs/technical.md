@@ -17,7 +17,7 @@
 ### Islands Architecture
 
 - All pages are static HTML by default (zero JS shipped)
-- React used only for contact form with `client:visible`
+- React used only for contact form and Keystatic admin UI with `client:only="react"` / `client:visible`
 - Prefer Astro components (`.astro`) over React components (`.tsx`)
 
 ### Content Collections
@@ -25,12 +25,31 @@
 - Astro Content Collections with Zod schemas
 - Collections: `blog`, `case-studies`
 - Schemas defined in `src/content/config.ts`
+- Content managed via Keystatic CMS (see CMS section below)
+
+### Keystatic CMS
+
+- **Config**: `keystatic.config.ts` — defines `blog` and `caseStudies` collections
+- **Storage**: Dual-mode via `import.meta.env.DEV`
+  - Dev: `{ kind: 'local' }` — reads/writes local files, no auth
+  - Production: `{ kind: 'github', repo: 'larrytoube/sem-astro' }` — GitHub API, OAuth required
+- **Custom integration**: `keystatic()` in `astro.config.mjs` (replaces broken `@keystatic/astro`)
+  - Vite plugin resolves `virtual:keystatic-config`
+  - `injectRoute` for `/keystatic/[...params]` and `/api/keystatic/[...params]` (both `prerender: false`)
+  - Server binds to `127.0.0.1` (required by Keystatic client)
+- **Key files**:
+  - `src/keystatic/page.astro` — Admin UI page (SSR)
+  - `src/keystatic/api.ts` — API handler via `makeHandler` (SSR)
+  - `src/components/KeystaticApp.tsx` — React wrapper for Keystatic UI
+- **Image fields**: Store filenames only (e.g., `workflow-optimization.avif`), rendering code prepends public path
+- **Collection path format**: Must end with `*/` for directory entries (`slug/index.mdoc`)
 
 ### Deployment
 
+- **Adapter**: `@astrojs/vercel` — SSR routes deploy as Vercel Serverless Functions, static pages unaffected
 - **Production**: Vercel, triggered by merge to `main`
 - **Preview**: Vercel preview deployments for each PR
-- **Build**: `pnpm build` → static output to `dist/`
+- **Build**: `pnpm build` → static pages to `.vercel/output/static/`, serverless functions for Keystatic routes
 - **Node version**: 22.x
 
 ## Performance Budgets

@@ -22,9 +22,9 @@ const { title, description, ogImage, canonical, noIndex } = Astro.props
   noIndex={noIndex}
 >
   <slot name="head" slot="head" />
-  <div class="min-h-screen bg-white">
+  <div class="flex min-h-screen flex-col bg-white">
     <SEMHeader />
-    <main>
+    <main class="flex-1">
       <slot />
     </main>
     <SEMFooter />

@@ -1,14 +1,44 @@
 ---
+import { getCollection } from 'astro:content'
 import SEMLayout from '../../layouts/SEMLayout.astro'
 import SEMHero from '../../components/sem/SEMHero.astro'
+import SEMBlogCard from '../../components/sem/SEMBlogCard.astro'
 import SEMCTASection from '../../components/sem/SEMCTASection.astro'
 
-const posts = [
-  { title: 'Workflow Optimization Trends Shaping 2025', category: 'Workflow Optimization', date: 'May 2025', excerpt: 'Optimizing workflows helps organizations streamline processes, boost productivity, cut costs, and improve overall results.' },
-  { title: 'The End of the Facebook Pixel Era: What It Means for Marketers', category: 'Digital Marketing', date: 'October 2024', excerpt: "The disappearance of the Facebook Pixel isn't the end of data-driven marketing — it's the beginning of a new era. By leaning into first-party data strategies..." },
-  { title: 'The Future of Social Media Marketing in 2025 and Beyond', category: 'Digital Marketing', date: 'June 2024', excerpt: 'The key to success lies in understanding your audience, creating valuable and engaging content, and leveraging the unique strengths of each platform.' },
-  { title: 'The Benefits of Data Analytics in Personalized Marketing', category: 'Data Analytics', date: 'June 2024', excerpt: 'Storytelling is a powerful tool for building brand loyalty and connecting with your audience on a deeper level.' },
+function toSlug(id: string) {
+  return id.replace(/\/index\.(mdoc|mdx|md)$/, '').replace(/\.(mdoc|mdx|md)$/, '')
+}
+
+const posts = (await getCollection('blog', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf())
+
+const categories = [
+  { label: 'All', value: 'all' },
+  { label: 'Digital Marketing', value: 'digital-marketing' },
+  { label: 'SEO', value: 'seo' },
+  { label: 'AI', value: 'ai' },
+  { label: 'Data Analytics', value: 'data-analytics' },
+  { label: 'Workflow Optimization', value: 'workflow-optimization' },
+  { label: 'Marketing Strategy', value: 'marketing-strategy' },
+  { label: 'Brand Strategy', value: 'brand-strategy' },
+  { label: 'Paid Advertising', value: 'paid-advertising' },
+  { label: 'Social Media', value: 'social-media' },
+  { label: 'Creative Design', value: 'creative-design' },
 ]
+
+const categoryLabels: Record<string, string> = Object.fromEntries(
+  categories.map(c => [c.value, c.label])
+)
+
+const [featured, ...rest] = posts
+
+function formatDate(date: Date) {
+  return date.toLocaleDateString('en-US', { month: 'long', year: 'numeric' })
+}
+
+function blogImage(filename?: string) {
+  return filename ? `/images/blog/${filename}` : undefined
+}
 ---
 
 <SEMLayout
@@ -16,22 +46,68 @@ const posts = [
   description="Marketing insights, strategies, and tips from the Sharp End Marketing team."
 >
   <SEMHero
-    label="Insights"
-    title="Blog"
-    subtitle="Insights and strategies to help you grow"
+    label="INSIGHTS"
+    title="Marketing Insights & Inspiration"
+    subtitle="Stay ahead with the latest marketing trends, strategies, and insights from our team."
+    icon="search"
   />
 
-  <section class="px-6 py-20">
+  <section class="px-6 py-12">
     <div class="mx-auto max-w-7xl">
-      <div class="grid gap-8 md:grid-cols-2">
-        {posts.map(post => (
-          <article class="rounded-xl border border-border bg-white p-6 shadow-card">
-            <span class="text-xs font-bold uppercase tracking-wider text-teal-solid">{post.category}</span>
-            <h2 class="mt-2 text-h4 font-medium text-heading">{post.title}</h2>
-            <p class="mt-1 text-caption text-text-body/60">{post.date}</p>
-            <p class="mt-3 text-sm leading-relaxed text-text-body">{post.excerpt}</p>
-          </article>
+      <!-- Category Filter Pills -->
+      <div class="flex flex-wrap justify-center gap-3" id="category-filters">
+        {categories.map(cat => (
+          <button
+            data-category={cat.value}
+            class:list={[
+              'filter-pill rounded-full px-5 py-2 text-sm font-medium transition-colors',
+              cat.value === 'all'
+                ? 'bg-teal-solid text-white'
+                : 'bg-bg-light text-text-body hover:bg-teal-solid hover:text-white',
+            ]}
+          >
+            {cat.label}
+          </button>
         ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Blog Posts -->
+  <section class="px-6 pb-20">
+    <div class="mx-auto max-w-7xl">
+      <h2 class="sr-only">Blog Posts</h2>
+      <div id="blog-posts">
+        <!-- Featured Post -->
+        {featured && (
+          <div class="mb-8" data-post-category={featured.data.category}>
+            <SEMBlogCard
+              title={featured.data.title}
+              description={featured.data.description}
+              category={categoryLabels[featured.data.category] || featured.data.category}
+              date={formatDate(featured.data.publishedAt)}
+              href={`/blog/${toSlug(featured.id)}`}
+              image={blogImage(featured.data.image)}
+              featured={true}
+            />
+          </div>
+        )}
+
+        <!-- Post Grid -->
+        <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+          {rest.map(post => (
+            <div data-post-category={post.data.category}>
+              <SEMBlogCard
+                title={post.data.title}
+                description={post.data.description}
+                category={categoryLabels[post.data.category] || post.data.category}
+                date={formatDate(post.data.publishedAt)}
+                href={`/blog/${toSlug(post.id)}`}
+                image={blogImage(post.data.image)}
+              />
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   </section>
@@ -43,3 +119,31 @@ const posts = [
     ctaHref="/contact"
   />
 </SEMLayout>
+
+<script>
+  const buttons = document.querySelectorAll<HTMLButtonElement>('.filter-pill')
+  const posts = document.querySelectorAll<HTMLElement>('[data-post-category]')
+
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const category = btn.dataset.category
+
+      // Update active pill
+      buttons.forEach(b => {
+        b.classList.remove('bg-teal-solid', 'text-white')
+        b.classList.add('bg-bg-light', 'text-text-body')
+      })
+      btn.classList.remove('bg-bg-light', 'text-text-body')
+      btn.classList.add('bg-teal-solid', 'text-white')
+
+      // Filter posts
+      posts.forEach(post => {
+        if (category === 'all' || post.dataset.postCategory === category) {
+          post.style.display = ''
+        } else {
+          post.style.display = 'none'
+        }
+      })
+    })
+  })
+</script>

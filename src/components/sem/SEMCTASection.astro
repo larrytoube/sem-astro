@@ -4,57 +4,74 @@ interface Props {
   description?: string
   ctaText: string
   ctaHref: string
+  label?: string
+  variant?: 'default' | 'stats'
 }
 
-const { title, description, ctaText, ctaHref } = Astro.props
-const hasImage = Astro.slots.has('image')
+const { title, description, ctaText, ctaHref, label = 'CONTACT US', variant = 'default' } = Astro.props
 ---
 
-<section class="bg-teal-dark px-6 py-20 overflow-hidden">
+<section class="px-6 py-20">
   <div class="mx-auto max-w-7xl">
-    {hasImage ? (
-      <div class="grid items-center gap-12 md:grid-cols-2">
-        <div class="text-center md:text-left">
-          <h2 class="font-accent text-h2 font-medium text-white">
-            {title}
-          </h2>
+    <div class="cta-card relative overflow-hidden rounded-[32px] bg-teal-solid px-8 py-16 md:px-16 md:py-20">
+      <!-- Chevron overlay pattern -->
+      <div class="pointer-events-none absolute inset-0 overflow-hidden">
+        <svg class="absolute -right-20 top-1/2 h-[140%] w-auto -translate-y-1/2 opacity-[0.08]" viewBox="0 0 200 400" fill="none">
+          <path d="M40 0L160 200L40 400" stroke="white" stroke-width="40" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <svg class="absolute right-20 top-1/2 h-[120%] w-auto -translate-y-1/2 opacity-[0.06]" viewBox="0 0 200 400" fill="none">
+          <path d="M40 0L160 200L40 400" stroke="white" stroke-width="40" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <svg class="absolute -left-32 top-1/2 h-[160%] w-auto -translate-y-1/2 opacity-[0.04]" viewBox="0 0 300 400" fill="none">
+          <circle cx="150" cy="200" r="180" stroke="white" stroke-width="30"/>
+        </svg>
+      </div>
+
+      <div class="relative z-10 grid items-center gap-12 md:grid-cols-2">
+        <!-- Left: Content -->
+        <div>
+          <span class="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-sm font-medium text-white backdrop-blur-sm">
+            <svg class="h-4 w-4 text-teal-accent" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z" />
+            </svg>
+            <span class="text-teal-accent">{label}</span>
+          </span>
+          <h2 class="mt-6 font-accent text-h2 font-medium text-white">{title}</h2>
           {description && (
-            <p class="mt-4 text-lead text-white/70">
-              {description}
-            </p>
+            <p class="mt-4 text-lead text-white/70">{description}</p>
           )}
           <div class="mt-8">
-            <a href={ctaHref} class="btn-sem">
+            <a href={ctaHref} class="inline-flex items-center gap-2 rounded-[0px_7px] bg-teal-dark px-6 py-3 text-base font-medium text-white transition-colors hover:bg-[#012a30]">
               {ctaText}
-              <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+              <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
               </svg>
             </a>
           </div>
         </div>
-        <div class="flex justify-center">
-          <slot name="image" />
-        </div>
-      </div>
-    ) : (
-      <div class="mx-auto max-w-3xl text-center">
-        <h2 class="font-accent text-h2 font-medium text-white">
-          {title}
-        </h2>
-        {description && (
-          <p class="mt-4 text-lead text-white/70">
-            {description}
-          </p>
-        )}
-        <div class="mt-8">
-          <a href={ctaHref} class="btn-sem">
-            {ctaText}
-            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+
+        <!-- Right: Floating pills -->
+        <div class="relative hidden h-72 md:block">
+          <div class="absolute left-8 top-4 flex items-center gap-3 rounded-2xl bg-white px-6 py-4 shadow-card">
+            <svg class="h-5 w-5 text-teal-solid" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
             </svg>
-          </a>
+            <span class="text-base font-medium text-heading">Discover</span>
+          </div>
+          <div class="absolute left-0 top-1/2 -translate-y-1/2 flex items-center gap-3 rounded-2xl bg-white px-6 py-4 shadow-card">
+            <svg class="h-5 w-5 text-teal-solid" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z" />
+            </svg>
+            <span class="text-base font-medium text-heading">Create</span>
+          </div>
+          <div class="absolute bottom-4 left-16 flex items-center gap-3 rounded-2xl bg-white px-6 py-4 shadow-card">
+            <svg class="h-5 w-5 text-teal-solid" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z" />
+            </svg>
+            <span class="text-base font-medium text-heading">Analyze</span>
+          </div>
         </div>
       </div>
-    )}
+    </div>
   </div>
 </section>

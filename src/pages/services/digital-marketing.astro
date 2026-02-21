@@ -1,24 +1,25 @@
 ---
 import SEMLayout from '../../layouts/SEMLayout.astro'
-import SEMHero from '../../components/sem/SEMHero.astro'
 import SEMCTASection from '../../components/sem/SEMCTASection.astro'
 
-const offerings = [
+const approach = [
   {
-    title: 'Campaign Strategy',
-    description: 'Data-driven marketing plans designed to reach the right audience at the right time.',
+    step: '01',
+    title: 'Digital Marketing Tools',
+    description: "We've sat down and understand your goals and lay of the land in your particular space. From there, we've probably come up with some creative ideas. Now we typically choose a few key tools from a myriad of options.",
+    outcome: "Rather than trying to use many tools, focus on the ones we feel will deliver the best value to you and resonate with your prospect or existing customer base.",
   },
   {
-    title: 'Email Marketing',
-    description: 'Nurture leads and retain customers with targeted email sequences that convert.',
+    step: '02',
+    title: 'Content marketing or ads?',
+    description: "This is a foundational digital marketing question and usually the answer is both, but there needs to be long-term plan around this.",
+    outcome: "We're happy to sit down and explain how these work harmoniously, and when you might want to do one or the other with the ultimate goal of not needing ads at some point.",
   },
   {
-    title: 'Content Marketing',
-    description: 'Create valuable, relevant content that attracts your ideal customers and builds authority.',
-  },
-  {
-    title: 'Analytics & Reporting',
-    description: 'Transparent reporting and actionable insights so you always know what is working.',
+    step: '03',
+    title: 'Low hanging fruit!',
+    description: "Is your website content optimized to be picked up by the search engines? Have you created content your prospects are interested in....I mean, really interested in? If something has worked well in the past, let's double down on it in a structured manner.",
+    outcome: "What are the easiest ways we can move the needle? It usually involves looking at systems you currently have in place and how they can be optimized, let's pick some fruit!",
   },
 ]
 ---
@@ -28,45 +29,150 @@ const offerings = [
   description="Comprehensive digital marketing solutions that drive real-world results. Sharp End Marketing tailors strategies to your unique business goals."
 >
   <!-- Hero -->
-  <SEMHero
-    label="Services"
-    title="Digital Marketing"
-    subtitle="Digital solutions that drive real-world results."
-  />
-
-  <!-- What We Offer -->
-  <section class="px-6 py-20">
-    <div class="mx-auto max-w-4xl">
-      <h2 class="font-accent text-h2 font-medium text-heading">What We Offer</h2>
-      <ul class="mt-8 space-y-4">
-        {offerings.map(item => (
-          <li class="flex gap-3">
-            <span class="mt-1 text-teal-solid font-bold">&#10003;</span>
-            <div>
-              <h3 class="font-medium text-heading">{item.title}</h3>
-              <p class="mt-1 text-sm text-text-body">{item.description}</p>
-            </div>
-          </li>
-        ))}
-      </ul>
+  <section class="px-6 pt-12 pb-8">
+    <div class="mx-auto max-w-4xl text-center">
+      <p class="section-label mb-6 justify-center">
+        <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M9.53 16.122a3 3 0 00-5.78 1.128 2.25 2.25 0 01-2.4 2.245 4.5 4.5 0 008.4-2.245c0-.399-.078-.78-.22-1.128zm0 0a15.998 15.998 0 003.388-1.62m-5.043-.025a15.994 15.994 0 011.622-3.395m3.42 3.42a15.995 15.995 0 004.764-4.648l3.876-5.814a1.151 1.151 0 00-1.597-1.597L14.146 6.32a15.996 15.996 0 00-4.649 4.764m3.42 3.42a6.776 6.776 0 00-3.42-3.42" />
+        </svg>
+        DIGITAL MARKETING
+      </p>
+      <h1 class="font-accent text-h1 font-medium text-heading md:text-hero">Empowering Brands in the Digital World.</h1>
+      <p class="mt-6 text-body-lg leading-relaxed text-text-body">
+        In a world where brands are more than just products or services, your brand's digital footprint is crucial to its success.
+      </p>
     </div>
   </section>
 
-  <!-- Why This Matters -->
+  <!-- About Service -->
+  <section class="px-6 py-16">
+    <div class="mx-auto max-w-7xl">
+      <div class="grid items-center gap-12 md:grid-cols-2">
+        <div class="overflow-hidden rounded-xl">
+          <img
+            src="/images/services/digital-marketing.jpg"
+            alt="Digital marketing landscape"
+            class="h-full w-full object-cover rounded-xl"
+            loading="lazy"
+          />
+        </div>
+        <div>
+          <p class="section-label mb-4">
+            <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
+            </svg>
+            ABOUT DIGITAL MARKETING
+          </p>
+          <h2 class="font-accent text-h2 font-medium text-heading">Unlock your business potential with expert Digital Marketing</h2>
+          <p class="mt-6 text-body-lg leading-relaxed text-text-body">
+            It all starts with "Digital Marketing", a catch-all term that is separated into three areas; <strong>Paid</strong>, <strong>Owned</strong> and <strong>Earned</strong>.
+          </p>
+          <p class="mt-4 text-body-lg leading-relaxed text-text-body">
+            These include everything from Social Media Marketing, to Search Engine Optimization (SEO) to Content Marketing (content is still King!), Pay Per Click (PPC) Advertising which can include Social and Search ads, Influencer Marketing, Mobile Marketing, don't forget Email Marketing and if it looks like it might work, you might want to try Affiliate Marketing to name a few.
+          </p>
+          <p class="mt-4 text-body-lg leading-relaxed text-text-body">
+            Finally, all of these tools are great, but without understanding what your key success metrics are, it's a vanity exercise. This is a lot to digest, but we're here to break it all down into manageable pieces. Send us a message or call to start the conversation.
+          </p>
+          <a href="/contact" class="btn-sem mt-8 inline-flex">
+            Get Started
+            <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Our Approach -->
   <section class="bg-bg-light px-6 py-20">
-    <div class="mx-auto max-w-4xl text-center">
-      <h2 class="font-accent text-h2 font-medium text-heading">Why This Matters</h2>
-      <p class="mt-6 text-body-lg leading-relaxed text-text-body">
-        Digital marketing is more than just running ads. It is about creating a cohesive strategy that connects your brand with the people who need it most. We bring together campaign planning, content, email, and analytics into a unified approach that delivers measurable results.
+    <div class="mx-auto max-w-7xl">
+      <p class="section-label mb-4">
+        <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M7.217 10.907a2.25 2.25 0 100 2.186m0-2.186c.18.324.283.696.283 1.093s-.103.77-.283 1.093m0-2.186l9.566-5.314m-9.566 7.5l9.566 5.314m0 0a2.25 2.25 0 103.935 2.186 2.25 2.25 0 00-3.935-2.186zm0-12.814a2.25 2.25 0 103.933-2.185 2.25 2.25 0 00-3.933 2.185z" />
+        </svg>
+        OUR APPROACH
       </p>
+      <h2 class="font-accent text-h2 font-medium text-heading">Our Approach to Digital Marketing</h2>
+      <p class="mt-4 text-body-lg leading-relaxed text-text-body">
+        Our process is designed to deliver results at every stage of your brand's marketing journey. Here's how we do it:
+      </p>
+
+      <div class="mt-12 grid gap-8 md:grid-cols-3">
+        {approach.map(item => (
+          <div class="rounded-2xl bg-white p-8 shadow-card">
+            <span class="text-sm font-semibold text-teal-solid">{item.step}</span>
+            <h3 class="mt-2 font-accent text-h4 font-medium text-heading">{item.title}</h3>
+            <p class="mt-4 text-sm leading-relaxed text-text-body">{item.description}</p>
+            <div class="mt-4 rounded-lg bg-bg-light p-4">
+              <p class="text-sm leading-relaxed text-text-body">
+                <span class="font-semibold text-heading">Outcome:</span> {item.outcome}
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Brands We've Transformed -->
+  <section class="px-6 py-20">
+    <div class="mx-auto max-w-7xl">
+      <p class="section-label mb-4">
+        <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M9.53 16.122a3 3 0 00-5.78 1.128 2.25 2.25 0 01-2.4 2.245 4.5 4.5 0 008.4-2.245c0-.399-.078-.78-.22-1.128zm0 0a15.998 15.998 0 003.388-1.62m-5.043-.025a15.994 15.994 0 011.622-3.395m3.42 3.42a15.995 15.995 0 004.764-4.648l3.876-5.814a1.151 1.151 0 00-1.597-1.597L14.146 6.32a15.996 15.996 0 00-4.649 4.764m3.42 3.42a6.776 6.776 0 00-3.42-3.42" />
+        </svg>
+        SUCCESS STORIES
+      </p>
+      <h2 class="font-accent text-h2 font-medium text-heading">Brands we've Transformed</h2>
+      <p class="mt-4 text-body-lg leading-relaxed text-text-body">
+        Here is an example of a brand we've had the pleasure of working with, helping them redefine their identity and achieve their goals.
+      </p>
+
+      <div class="mt-12 grid items-center gap-12 md:grid-cols-2">
+        <div>
+          <h3 class="font-accent text-h3 font-medium text-heading">Rebranding for Success</h3>
+          <p class="mt-4 text-body-lg leading-relaxed text-text-body">
+            The rebranding was a success, resulting in a whooping 60% increase in new prospect registrations and a stronger market presence, with improved brand recognition in the community.
+          </p>
+          <div class="mt-6 flex gap-4">
+            <a href="/case-studies/smithwood-builders" class="btn-sem">
+              View Case Study
+              <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+              </svg>
+            </a>
+            <a href="/case-studies" class="inline-flex items-center gap-2 rounded-[0px_7px] border border-border px-6 py-3 text-sm font-medium text-heading transition-colors hover:bg-bg-light">
+              All Case Studies
+              <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div class="grid grid-cols-2 gap-4">
+          <img
+            src="/images/services/smithwood-postcard1.png"
+            alt="Smithwood Builders postcard design"
+            class="rounded-xl object-cover"
+            loading="lazy"
+          />
+          <img
+            src="/images/services/smithwood-postcard2.png"
+            alt="Smithwood Builders postcard design"
+            class="rounded-xl object-cover"
+            loading="lazy"
+          />
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- CTA -->
   <SEMCTASection
-    title="Let's Discuss Your Project"
-    description="Ready to take your marketing to the next level?"
-    ctaText="Contact Us"
+    title="Ready to Elevate Your Brand?"
+    description="Partner with Sharp End and let's create something extraordinary together."
+    ctaText="Get in Touch"
     ctaHref="/contact"
   />
 </SEMLayout>

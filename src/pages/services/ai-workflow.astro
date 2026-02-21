@@ -1,24 +1,31 @@
 ---
 import SEMLayout from '../../layouts/SEMLayout.astro'
-import SEMHero from '../../components/sem/SEMHero.astro'
 import SEMCTASection from '../../components/sem/SEMCTASection.astro'
 
-const offerings = [
+const approach = [
   {
-    title: 'Process Automation',
-    description: 'Identify repetitive tasks and automate them with AI-powered tools that save time and reduce errors.',
-  },
-  {
-    title: 'AI Tool Integration',
-    description: 'Seamlessly integrate the right AI tools into your existing tech stack for maximum impact.',
-  },
-  {
+    step: '01',
     title: 'Workflow Analysis',
-    description: 'Map and evaluate your current workflows to find bottlenecks and opportunities for optimization.',
+    description: "We start by mapping your current workflows and identifying bottlenecks, repetitive tasks, and areas where AI can deliver the most value. Understanding your processes is the foundation for effective optimization.",
+    outcome: "A clear picture of your current operations with prioritized opportunities for AI-driven improvement.",
   },
   {
-    title: 'Custom AI Solutions',
-    description: 'Purpose-built AI applications tailored to your specific business processes and goals.',
+    step: '02',
+    title: 'Solution Design',
+    description: "Based on our analysis, we design custom AI solutions tailored to your specific needs. We cut through the noise and focus on practical applications that deliver real, measurable value.",
+    outcome: "A detailed implementation plan for AI solutions that align with your business goals and technical capabilities.",
+  },
+  {
+    step: '03',
+    title: 'Implementation & Integration',
+    description: "We build and integrate AI-powered tools into your existing tech stack, ensuring seamless adoption. From process automation to custom AI applications, we handle the technical complexity so you don't have to.",
+    outcome: "Fully functional AI solutions integrated into your workflows, with your team trained and confident in using them.",
+  },
+  {
+    step: '04',
+    title: 'Optimization & Support',
+    description: "AI solutions get better with time and data. We continuously monitor performance, fine-tune algorithms, and expand capabilities as your needs evolve.",
+    outcome: "Ongoing improvements that compound over time, delivering increasing returns on your AI investment.",
   },
 ]
 ---
@@ -28,45 +35,94 @@ const offerings = [
   description="AI-powered workflow optimization that streamlines your processes and systems — saving time and money while boosting productivity."
 >
   <!-- Hero -->
-  <SEMHero
-    label="Services"
-    title="AI Workflow Optimization"
-    subtitle="We design AI-powered applications that streamline processes and systems."
-  />
-
-  <!-- What We Offer -->
-  <section class="px-6 py-20">
-    <div class="mx-auto max-w-4xl">
-      <h2 class="font-accent text-h2 font-medium text-heading">What We Offer</h2>
-      <ul class="mt-8 space-y-4">
-        {offerings.map(item => (
-          <li class="flex gap-3">
-            <span class="mt-1 text-teal-solid font-bold">&#10003;</span>
-            <div>
-              <h3 class="font-medium text-heading">{item.title}</h3>
-              <p class="mt-1 text-sm text-text-body">{item.description}</p>
-            </div>
-          </li>
-        ))}
-      </ul>
+  <section class="px-6 pt-12 pb-8">
+    <div class="mx-auto max-w-4xl text-center">
+      <p class="section-label mb-6 justify-center">
+        <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.455 2.456L21.75 6l-1.036.259a3.375 3.375 0 00-2.455 2.456z" />
+        </svg>
+        AI WORKFLOW OPTIMIZATION
+      </p>
+      <h1 class="font-accent text-h1 font-medium text-heading md:text-hero">Harness the Power of AI for Your Business</h1>
+      <p class="mt-6 text-body-lg leading-relaxed text-text-body">
+        We design AI-powered applications that will streamline processes and systems, saving you time and money.
+      </p>
     </div>
   </section>
 
-  <!-- Why This Matters -->
+  <!-- About Service -->
+  <section class="px-6 py-16">
+    <div class="mx-auto max-w-7xl">
+      <div class="grid items-center gap-12 md:grid-cols-2">
+        <div class="overflow-hidden rounded-xl">
+          <img
+            src="/images/services/digital-marketing.jpg"
+            alt="AI workflow optimization"
+            class="h-full w-full object-cover rounded-xl"
+            loading="lazy"
+          />
+        </div>
+        <div>
+          <p class="section-label mb-4">
+            <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
+            </svg>
+            ABOUT AI WORKFLOW OPTIMIZATION
+          </p>
+          <h2 class="font-accent text-h2 font-medium text-heading">Unlock your business potential with expert Digital Marketing</h2>
+          <p class="mt-6 text-body-lg leading-relaxed text-text-body">
+            Artificial Intelligence (AI) surrounds all of us today. At Sharp End Marketing we have embraced this revolution. A few examples of where we use it; to enhance the delivery of our marketing & creative services, reduce administrative tasks and optimize processes & workflows.
+          </p>
+          <p class="mt-4 text-body-lg leading-relaxed text-text-body">
+            Let us show your team how to harness the value of AI for specific tasks. The companies that adopt smart automation now will have a significant competitive advantage. We help you cut through the noise, identify where AI delivers real value, and implement solutions that save time and money from day one.
+          </p>
+          <a href="/contact" class="btn-sem mt-8 inline-flex">
+            Get Started
+            <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Our Approach -->
   <section class="bg-bg-light px-6 py-20">
-    <div class="mx-auto max-w-4xl text-center">
-      <h2 class="font-accent text-h2 font-medium text-heading">Why This Matters</h2>
-      <p class="mt-6 text-body-lg leading-relaxed text-text-body">
-        AI is transforming the way businesses operate. The companies that adopt smart automation now will have a significant competitive advantage. We help you cut through the noise, identify where AI delivers real value, and implement solutions that save time and money from day one.
+    <div class="mx-auto max-w-7xl">
+      <p class="section-label mb-4">
+        <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M7.217 10.907a2.25 2.25 0 100 2.186m0-2.186c.18.324.283.696.283 1.093s-.103.77-.283 1.093m0-2.186l9.566-5.314m-9.566 7.5l9.566 5.314m0 0a2.25 2.25 0 103.935 2.186 2.25 2.25 0 00-3.935-2.186zm0-12.814a2.25 2.25 0 103.933-2.185 2.25 2.25 0 00-3.933 2.185z" />
+        </svg>
+        OUR APPROACH
       </p>
+      <h2 class="font-accent text-h2 font-medium text-heading">Our Approach to AI Workflow Optimization</h2>
+      <p class="mt-4 text-body-lg leading-relaxed text-text-body">
+        Our process is designed to deliver results at every stage of your AI implementation journey. Here's how we do it:
+      </p>
+
+      <div class="mt-12 grid gap-8 md:grid-cols-2">
+        {approach.map(item => (
+          <div class="rounded-2xl bg-white p-8 shadow-card">
+            <span class="text-sm font-semibold text-teal-solid">{item.step}</span>
+            <h3 class="mt-2 font-accent text-h4 font-medium text-heading">{item.title}</h3>
+            <p class="mt-4 text-sm leading-relaxed text-text-body">{item.description}</p>
+            <div class="mt-4 rounded-lg bg-bg-light p-4">
+              <p class="text-sm leading-relaxed text-text-body">
+                <span class="font-semibold text-heading">Outcome:</span> {item.outcome}
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   </section>
 
   <!-- CTA -->
   <SEMCTASection
-    title="Let's Discuss Your Project"
-    description="Ready to take your marketing to the next level?"
-    ctaText="Contact Us"
+    title="Ready to Elevate Your Brand?"
+    description="Partner with Sharp End and let's create something extraordinary together."
+    ctaText="Get in Touch"
     ctaHref="/contact"
   />
 </SEMLayout>

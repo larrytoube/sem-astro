@@ -1,24 +1,31 @@
 ---
 import SEMLayout from '../../layouts/SEMLayout.astro'
-import SEMHero from '../../components/sem/SEMHero.astro'
 import SEMCTASection from '../../components/sem/SEMCTASection.astro'
 
-const offerings = [
+const approach = [
   {
-    title: 'Brand Positioning',
-    description: 'Define where your brand sits in the market and how it stands apart from the competition.',
+    step: '01',
+    title: 'Discovery & Research',
+    description: "We begin by diving deep into your business, industry, and competition. Through comprehensive research and analysis, we uncover the unique qualities that set your brand apart and identify opportunities for growth.",
+    outcome: "A comprehensive understanding of your brand's unique selling proposition (USP) leading to a clear direction for your brand strategy.",
   },
   {
-    title: 'Competitive Analysis',
-    description: 'Deep-dive research into your competitive landscape to uncover opportunities and threats.',
+    step: '02',
+    title: 'Visual Identity',
+    description: "With your brand's essence clearly defined, we move on to creating a visual identity that reflects your brand's personality. From logos and color schemes to typography and imagery, we ensure every visual element speaks to your brand's core message.",
+    outcome: "A well-defined brand identity that resonates with your target audience and aligns with your business goals.",
   },
   {
-    title: 'Messaging Frameworks',
-    description: 'Craft clear, consistent messaging that resonates with your target audience across every touchpoint.',
+    step: '03',
+    title: 'Brand Guidelines',
+    description: "To maintain consistency across all touchpoints, we develop comprehensive brand guidelines. These guidelines serve as a roadmap for how your brand should be represented, ensuring that every interaction reinforces your brand's identity.",
+    outcome: "A cohesive and powerful brand story that sets you apart from competitors and connects with your audience on an emotional level.",
   },
   {
-    title: 'Visual Identity Guidelines',
-    description: 'Establish a cohesive visual language — logos, colors, typography — that reinforces your brand story.',
+    step: '04',
+    title: 'Implementation & Launch',
+    description: "Finally, we assist in the seamless implementation of your brand strategy across all platforms. Whether it's launching a new brand or rebranding an existing one, we ensure your brand makes a lasting impact from day one.",
+    outcome: "A fully implemented brand strategy that drives brand recognition, loyalty, and growth.",
   },
 ]
 ---
@@ -28,45 +35,144 @@ const offerings = [
   description="Build a strategic brand foundation that bridges your vision with measurable results. Sharp End Marketing helps you plan smarter."
 >
   <!-- Hero -->
-  <SEMHero
-    label="Services"
-    title="Brand Strategy"
-    subtitle="Plan smarter, not harder. Strategy is the bridge between dreams and results."
-  />
-
-  <!-- What We Offer -->
-  <section class="px-6 py-20">
-    <div class="mx-auto max-w-4xl">
-      <h2 class="font-accent text-h2 font-medium text-heading">What We Offer</h2>
-      <ul class="mt-8 space-y-4">
-        {offerings.map(item => (
-          <li class="flex gap-3">
-            <span class="mt-1 text-teal-solid font-bold">&#10003;</span>
-            <div>
-              <h3 class="font-medium text-heading">{item.title}</h3>
-              <p class="mt-1 text-sm text-text-body">{item.description}</p>
-            </div>
-          </li>
-        ))}
-      </ul>
+  <section class="px-6 pt-12 pb-8">
+    <div class="mx-auto max-w-4xl text-center">
+      <p class="section-label mb-6 justify-center">
+        <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M9.53 16.122a3 3 0 00-5.78 1.128 2.25 2.25 0 01-2.4 2.245 4.5 4.5 0 008.4-2.245c0-.399-.078-.78-.22-1.128zm0 0a15.998 15.998 0 003.388-1.62m-5.043-.025a15.994 15.994 0 011.622-3.395m3.42 3.42a15.995 15.995 0 004.764-4.648l3.876-5.814a1.151 1.151 0 00-1.597-1.597L14.146 6.32a15.996 15.996 0 00-4.649 4.764m3.42 3.42a6.776 6.776 0 00-3.42-3.42" />
+        </svg>
+        BRAND STRATEGY
+      </p>
+      <h1 class="font-accent text-h1 font-medium text-heading md:text-hero">Strategy is the bridge between dreams and results</h1>
+      <p class="mt-6 text-body-lg leading-relaxed text-text-body">
+        In a world where brands are more than just products or services, your brand's identity is crucial to its success.
+      </p>
     </div>
   </section>
 
-  <!-- Why This Matters -->
+  <!-- About Service -->
+  <section class="px-6 py-16">
+    <div class="mx-auto max-w-7xl">
+      <div class="grid items-center gap-12 md:grid-cols-2">
+        <div class="overflow-hidden rounded-xl">
+          <img
+            src="/images/services/brand-strategy.jpg"
+            alt="Brand strategy - coastal landscape"
+            class="h-full w-full object-cover rounded-xl"
+            loading="lazy"
+          />
+        </div>
+        <div>
+          <p class="section-label mb-4">
+            <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
+            </svg>
+            ABOUT BRAND STRATEGY
+          </p>
+          <h2 class="font-accent text-h2 font-medium text-heading">Unlock your business potential with expert Digital Marketing</h2>
+          <p class="mt-6 text-body-lg leading-relaxed text-text-body">
+            At SEM, our Brand Strategy service is designed to uncover your brand's unique identity and craft that into a compelling narrative that resonates with your target market.
+          </p>
+          <a href="/contact" class="btn-sem mt-8 inline-flex">
+            Get Started
+            <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Our Approach -->
   <section class="bg-bg-light px-6 py-20">
-    <div class="mx-auto max-w-4xl text-center">
-      <h2 class="font-accent text-h2 font-medium text-heading">Why This Matters</h2>
-      <p class="mt-6 text-body-lg leading-relaxed text-text-body">
-        A strong brand strategy is the foundation for every marketing effort. Without it, campaigns lack direction and budgets get wasted. We help you define who you are, who you serve, and why it matters — so every dollar you invest works harder for you.
+    <div class="mx-auto max-w-7xl">
+      <p class="section-label mb-4">
+        <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M7.217 10.907a2.25 2.25 0 100 2.186m0-2.186c.18.324.283.696.283 1.093s-.103.77-.283 1.093m0-2.186l9.566-5.314m-9.566 7.5l9.566 5.314m0 0a2.25 2.25 0 103.935 2.186 2.25 2.25 0 00-3.935-2.186zm0-12.814a2.25 2.25 0 103.933-2.185 2.25 2.25 0 00-3.933 2.185z" />
+        </svg>
+        OUR APPROACH
       </p>
+      <h2 class="font-accent text-h2 font-medium text-heading">Our Approach to Strategic Brand Building</h2>
+      <p class="mt-4 text-body-lg leading-relaxed text-text-body">
+        Our process is designed to deliver results at every stage of your brand's marketing journey. Here's how we do it:
+      </p>
+
+      <div class="mt-12 grid gap-8 md:grid-cols-2">
+        {approach.map(item => (
+          <div class="rounded-2xl bg-white p-8 shadow-card">
+            <span class="text-sm font-semibold text-teal-solid">{item.step}</span>
+            <h3 class="mt-2 font-accent text-h4 font-medium text-heading">{item.title}</h3>
+            <p class="mt-4 text-sm leading-relaxed text-text-body">{item.description}</p>
+            <div class="mt-4 rounded-lg bg-bg-light p-4">
+              <p class="text-sm leading-relaxed text-text-body">
+                <span class="font-semibold text-heading">Outcome:</span> {item.outcome}
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Brands We've Transformed -->
+  <section class="px-6 py-20">
+    <div class="mx-auto max-w-7xl">
+      <p class="section-label mb-4">
+        <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M9.53 16.122a3 3 0 00-5.78 1.128 2.25 2.25 0 01-2.4 2.245 4.5 4.5 0 008.4-2.245c0-.399-.078-.78-.22-1.128zm0 0a15.998 15.998 0 003.388-1.62m-5.043-.025a15.994 15.994 0 011.622-3.395m3.42 3.42a15.995 15.995 0 004.764-4.648l3.876-5.814a1.151 1.151 0 00-1.597-1.597L14.146 6.32a15.996 15.996 0 00-4.649 4.764m3.42 3.42a6.776 6.776 0 00-3.42-3.42" />
+        </svg>
+        SUCCESS STORIES
+      </p>
+      <h2 class="font-accent text-h2 font-medium text-heading">Brands we've Transformed</h2>
+      <p class="mt-4 text-body-lg leading-relaxed text-text-body">
+        Here are some of the brands we've had the pleasure of working with, helping them redefine their identity and achieve their goals.
+      </p>
+
+      <div class="mt-12 grid items-center gap-12 md:grid-cols-2">
+        <div>
+          <h3 class="font-accent text-h3 font-medium text-heading">Rebranding for Success</h3>
+          <p class="mt-4 text-body-lg leading-relaxed text-text-body">
+            Sharp End Marketing helped Jack Storms streamline his digital strategy, resulting in a 40% increase in online engagement within three months.
+          </p>
+          <div class="mt-6 flex gap-4">
+            <a href="/case-studies/jack-storms" class="btn-sem">
+              View Case Study
+              <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+              </svg>
+            </a>
+            <a href="/case-studies" class="inline-flex items-center gap-2 rounded-[0px_7px] border border-border px-6 py-3 text-sm font-medium text-heading transition-colors hover:bg-bg-light">
+              All Case Studies
+              <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div class="grid grid-cols-2 gap-4">
+          <img
+            src="/images/services/jack-storms-art.png"
+            alt="Jack Storms contemporary art"
+            class="rounded-xl object-cover"
+            loading="lazy"
+          />
+          <img
+            src="/images/services/jack-storms-screenshot.png"
+            alt="Jack Storms website redesign"
+            class="rounded-xl object-cover"
+            loading="lazy"
+          />
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- CTA -->
   <SEMCTASection
-    title="Let's Discuss Your Project"
-    description="Ready to take your marketing to the next level?"
-    ctaText="Contact Us"
+    title="Ready to Elevate Your Brand?"
+    description="Partner with Sharp End and let's create something extraordinary together."
+    ctaText="Get in Touch"
     ctaHref="/contact"
   />
 </SEMLayout>

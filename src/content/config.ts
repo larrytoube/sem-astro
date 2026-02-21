@@ -3,11 +3,10 @@ import { defineCollection, z } from 'astro:content'
 const blog = defineCollection({
   type: 'content',
   schema: z.object({
-    title: z.string().min(1).max(100),
-    description: z.string().min(20).max(300),
+    title: z.string().min(1),
+    description: z.string().min(20).max(500),
     author: z.string().min(1),
     publishedAt: z.coerce.date(),
-    updatedAt: z.coerce.date().optional(),
     category: z.enum([
       'digital-marketing',
       'seo',
@@ -17,19 +16,10 @@ const blog = defineCollection({
       'brand-strategy',
       'paid-advertising',
       'creative-design',
+      'ai',
+      'marketing-strategy',
     ]),
-    tags: z.array(z.string()).optional(),
-    hero: z.object({
-      title: z.string().min(1),
-      lead: z.string().min(1),
-      image: z.string().optional(),
-      imageAlt: z.string().optional(),
-    }),
-    seo: z.object({
-      ogImage: z.string().optional(),
-      canonical: z.string().url().optional(),
-      noIndex: z.boolean().default(false),
-    }).default({}),
+    image: z.string().optional(),
     draft: z.boolean().default(false),
   }),
 })
@@ -37,27 +27,26 @@ const blog = defineCollection({
 const caseStudies = defineCollection({
   type: 'content',
   schema: z.object({
-    title: z.string().min(1).max(100),
-    client: z.string().min(1),
-    category: z.string().min(1),
-    description: z.string().min(20).max(300),
-    metrics: z.array(z.object({
-      label: z.string().min(1),
-      value: z.string().min(1),
-    })).optional(),
-    hero: z.object({
-      title: z.string().min(1),
-      lead: z.string().min(1),
-      image: z.string().optional(),
-    }),
+    title: z.string(),
+    client: z.string(),
+    category: z.string(),
+    description: z.string(),
+    date: z.string().optional(),
     duration: z.string().optional(),
+    heroImage: z.string(),
+    logo: z.string().optional(),
+    gallery: z.array(z.object({
+      src: z.string(),
+      alt: z.string().default(''),
+    })).default([]),
+    relatedStudies: z.array(z.string()).default([]),
+    order: z.number().default(0),
     seo: z.object({
       ogImage: z.string().optional(),
       canonical: z.string().url().optional(),
       noIndex: z.boolean().default(false),
     }).default({}),
     draft: z.boolean().default(false),
-    publishedAt: z.coerce.date().optional(),
   }),
 })
 

@@ -1,24 +1,25 @@
 ---
 import SEMLayout from '../../layouts/SEMLayout.astro'
-import SEMHero from '../../components/sem/SEMHero.astro'
 import SEMCTASection from '../../components/sem/SEMCTASection.astro'
 
-const offerings = [
+const approach = [
   {
-    title: 'Google Ads Management',
-    description: 'Reach customers actively searching for your products and services with targeted search and display campaigns.',
+    step: '01',
+    title: 'Audience Research & Targeting',
+    description: "We begin by identifying your ideal customer profiles and building detailed audience segments. Using platform data and market research, we pinpoint exactly who to reach and where to find them.",
+    outcome: "Laser-focused targeting that puts your ads in front of the people most likely to convert, maximizing every dollar of your ad spend.",
   },
   {
-    title: 'Meta Ads Campaigns',
-    description: 'Engage audiences on Facebook and Instagram with creative ad campaigns that drive awareness and conversions.',
+    step: '02',
+    title: 'Campaign Strategy & Creative',
+    description: "We develop compelling ad creative and messaging tailored to each platform and audience segment. From Google Search ads to Meta campaigns, every element is crafted to capture attention and drive action.",
+    outcome: "High-performing ad creative that stands out in crowded feeds and search results, driving clicks and conversions.",
   },
   {
-    title: 'Retargeting Strategies',
-    description: 'Re-engage visitors who have already shown interest in your brand and guide them toward conversion.',
-  },
-  {
-    title: 'Budget Optimization',
-    description: 'Maximize your return on ad spend with continuous testing, analysis, and bid strategy refinement.',
+    step: '03',
+    title: 'Optimization & Scaling',
+    description: "We continuously monitor campaign performance, testing different variables and making data-driven adjustments. When we find what works, we scale it. When something underperforms, we pivot quickly.",
+    outcome: "Continuously improving ROAS with transparent reporting that shows exactly where your budget is going and what results it's delivering.",
   },
 ]
 ---
@@ -28,45 +29,94 @@ const offerings = [
   description="Targeted paid advertising campaigns that deliver precision results. Stop guessing and start reaching the right audience."
 >
   <!-- Hero -->
-  <SEMHero
-    label="Services"
-    title="Paid Advertising"
-    subtitle="Stop guessing and start targeting — precision advertising."
-  />
-
-  <!-- What We Offer -->
-  <section class="px-6 py-20">
-    <div class="mx-auto max-w-4xl">
-      <h2 class="font-accent text-h2 font-medium text-heading">What We Offer</h2>
-      <ul class="mt-8 space-y-4">
-        {offerings.map(item => (
-          <li class="flex gap-3">
-            <span class="mt-1 text-teal-solid font-bold">&#10003;</span>
-            <div>
-              <h3 class="font-medium text-heading">{item.title}</h3>
-              <p class="mt-1 text-sm text-text-body">{item.description}</p>
-            </div>
-          </li>
-        ))}
-      </ul>
+  <section class="px-6 pt-12 pb-8">
+    <div class="mx-auto max-w-4xl text-center">
+      <p class="section-label mb-6 justify-center">
+        <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 3v11.25A2.25 2.25 0 006 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0118 16.5h-2.25m-7.5 0h7.5m-7.5 0l-1 3m8.5-3l1 3m0 0l.5 1.5m-.5-1.5h-9.5m0 0l-.5 1.5m.75-9l3-3 2.148 2.148A12.061 12.061 0 0116.5 7.605" />
+        </svg>
+        PAID ADVERTISING
+      </p>
+      <h1 class="font-accent text-h1 font-medium text-heading md:text-hero">Precision Advertising That Delivers Results</h1>
+      <p class="mt-6 text-body-lg leading-relaxed text-text-body">
+        Stop guessing and start targeting. We put your brand in front of the right people at exactly the right moment.
+      </p>
     </div>
   </section>
 
-  <!-- Why This Matters -->
+  <!-- About Service -->
+  <section class="px-6 py-16">
+    <div class="mx-auto max-w-7xl">
+      <div class="grid items-center gap-12 md:grid-cols-2">
+        <div class="overflow-hidden rounded-xl">
+          <img
+            src="/images/services/process-road.jpg"
+            alt="Paid advertising strategy"
+            class="h-full w-full object-cover rounded-xl"
+            loading="lazy"
+          />
+        </div>
+        <div>
+          <p class="section-label mb-4">
+            <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
+            </svg>
+            ABOUT PAID ADVERTISING
+          </p>
+          <h2 class="font-accent text-h2 font-medium text-heading">Unlock your business potential with expert Digital Marketing</h2>
+          <p class="mt-6 text-body-lg leading-relaxed text-text-body">
+            Paid advertising is one of the fastest ways to generate qualified leads and revenue. Whether it's Google Ads, Meta (Facebook & Instagram), LinkedIn, or other platforms, we create targeted campaigns that reach the right audience at the right time.
+          </p>
+          <p class="mt-4 text-body-lg leading-relaxed text-text-body">
+            We take the guesswork out of ad spend and focus every dollar on measurable outcomes. From search ads that capture intent to social ads that build awareness, we manage the full spectrum of paid media to drive results for your business.
+          </p>
+          <a href="/contact" class="btn-sem mt-8 inline-flex">
+            Get Started
+            <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Our Approach -->
   <section class="bg-bg-light px-6 py-20">
-    <div class="mx-auto max-w-4xl text-center">
-      <h2 class="font-accent text-h2 font-medium text-heading">Why This Matters</h2>
-      <p class="mt-6 text-body-lg leading-relaxed text-text-body">
-        Paid advertising puts your brand in front of the right people at exactly the right moment. When managed properly, it is one of the fastest ways to generate qualified leads and revenue. We take the guesswork out of ad spend and focus every dollar on measurable outcomes.
+    <div class="mx-auto max-w-7xl">
+      <p class="section-label mb-4">
+        <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M7.217 10.907a2.25 2.25 0 100 2.186m0-2.186c.18.324.283.696.283 1.093s-.103.77-.283 1.093m0-2.186l9.566-5.314m-9.566 7.5l9.566 5.314m0 0a2.25 2.25 0 103.935 2.186 2.25 2.25 0 00-3.935-2.186zm0-12.814a2.25 2.25 0 103.933-2.185 2.25 2.25 0 00-3.933 2.185z" />
+        </svg>
+        OUR APPROACH
       </p>
+      <h2 class="font-accent text-h2 font-medium text-heading">Our Approach to Paid Advertising</h2>
+      <p class="mt-4 text-body-lg leading-relaxed text-text-body">
+        Our process is designed to deliver results at every stage of your brand's marketing journey. Here's how we do it:
+      </p>
+
+      <div class="mt-12 grid gap-8 md:grid-cols-3">
+        {approach.map(item => (
+          <div class="rounded-2xl bg-white p-8 shadow-card">
+            <span class="text-sm font-semibold text-teal-solid">{item.step}</span>
+            <h3 class="mt-2 font-accent text-h4 font-medium text-heading">{item.title}</h3>
+            <p class="mt-4 text-sm leading-relaxed text-text-body">{item.description}</p>
+            <div class="mt-4 rounded-lg bg-bg-light p-4">
+              <p class="text-sm leading-relaxed text-text-body">
+                <span class="font-semibold text-heading">Outcome:</span> {item.outcome}
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   </section>
 
   <!-- CTA -->
   <SEMCTASection
-    title="Let's Discuss Your Project"
-    description="Ready to take your marketing to the next level?"
-    ctaText="Contact Us"
+    title="Ready to Elevate Your Brand?"
+    description="Partner with Sharp End and let's create something extraordinary together."
+    ctaText="Get in Touch"
     ctaHref="/contact"
   />
 </SEMLayout>

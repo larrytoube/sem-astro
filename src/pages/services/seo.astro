@@ -1,72 +1,91 @@
 ---
 import SEMLayout from '../../layouts/SEMLayout.astro'
-import SEMHero from '../../components/sem/SEMHero.astro'
 import SEMCTASection from '../../components/sem/SEMCTASection.astro'
 
-const offerings = [
+const approach = [
   {
-    title: 'Technical SEO Audits',
-    description: 'Comprehensive site audits to identify and fix technical issues that hold back your rankings.',
+    step: '01',
+    title: 'Search Everywhere Optimization',
+    description: "Yes, I said Search Everywhere Optimization. Getting found through search continues to be about high quality content that your prospective or existing clients are looking for.",
+    outcome: "Search Engine Optimization (SEO) is monopolized by Google. In 2025, Google still rules search, but that is changing at the speed of light. Users are searching via voice, social platforms, LLM's like ChatGPT or Perplexity to name a few. But what is staying the same is 'results'. Quality content is required for ANY platform to include your information. So invest in yourself, through the creation of well thought out, informative, engaging, insightful, funny, educational content and you'll be found.",
   },
   {
-    title: 'Keyword Research',
-    description: 'Discover the search terms your ideal customers use and build a strategy around them.',
+    step: '02',
+    title: 'The Art and Science of SEO',
+    description: "Back to the art and science: there are thousands of variable Google takes into consideration when choosing the Search Engine Results Page (SERP), this is the science side and requires in-depth research on your business, your industry and your competition.",
+    outcome: "Even if Google folded tomorrow, any search option out there is looking to serve their client the most up-to-date, relevant information. Let's get your information ranking in search. Search Everywhere Optimization (SEO) will result in an increase of highly targeted, organic traffic to your website.",
   },
   {
-    title: 'On-Page Optimization',
-    description: 'Optimize your content, meta tags, and site structure to maximize search visibility.',
-  },
-  {
-    title: 'Link Building Strategy',
-    description: 'Earn high-quality backlinks that boost your domain authority and drive referral traffic.',
+    step: '03',
+    title: 'Convert Your Visitors',
+    description: "From there you better have a plan to convert all these new visitors!",
+    outcome: "Getting found is only half the battle. We help you optimize the entire journey from discovery to conversion, ensuring your SEO efforts translate into real business results.",
   },
 ]
 ---
 
 <SEMLayout
-  title="SEO"
+  title="Search Engine Optimization"
   description="Search engine optimization that delivers sustainable organic growth. Sharp End Marketing helps you be found by those who matter most."
 >
   <!-- Hero -->
-  <SEMHero
-    label="Services"
-    title="Search Engine Optimization"
-    subtitle="Be found by those who matter most for organic growth — sustainable results."
-  />
-
-  <!-- What We Offer -->
-  <section class="px-6 py-20">
-    <div class="mx-auto max-w-4xl">
-      <h2 class="font-accent text-h2 font-medium text-heading">What We Offer</h2>
-      <ul class="mt-8 space-y-4">
-        {offerings.map(item => (
-          <li class="flex gap-3">
-            <span class="mt-1 text-teal-solid font-bold">&#10003;</span>
-            <div>
-              <h3 class="font-medium text-heading">{item.title}</h3>
-              <p class="mt-1 text-sm text-text-body">{item.description}</p>
-            </div>
-          </li>
-        ))}
-      </ul>
+  <section class="px-6 pt-12 pb-8">
+    <div class="mx-auto max-w-4xl text-center">
+      <p class="section-label mb-6 justify-center">
+        <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+        </svg>
+        SEARCH ENGINE OPTIMIZATION
+      </p>
+      <h1 class="font-accent text-h1 font-medium text-heading md:text-hero">Content is Driving <span class="text-teal-solid">Results.</span></h1>
+      <p class="mt-6 text-body-lg leading-relaxed text-text-body">
+        Search is undergoing a major disruption. SEO is still relevant but let's change the acronym to Search Everywhere Optimization.
+      </p>
     </div>
   </section>
 
-  <!-- Why This Matters -->
-  <section class="bg-bg-light px-6 py-20">
-    <div class="mx-auto max-w-4xl text-center">
-      <h2 class="font-accent text-h2 font-medium text-heading">Why This Matters</h2>
-      <p class="mt-6 text-body-lg leading-relaxed text-text-body">
-        Organic search is one of the highest-value marketing channels because it compounds over time. Unlike paid ads that stop the moment you turn them off, a well-executed SEO strategy keeps delivering traffic, leads, and revenue month after month.
-      </p>
+  <!-- About Service -->
+  <section class="px-6 py-16">
+    <div class="mx-auto max-w-7xl">
+      <div class="grid items-start gap-12 md:grid-cols-2">
+        <div class="overflow-hidden rounded-xl">
+          <img
+            src="/images/services/brand-strategy.jpg"
+            alt="SEO strategy"
+            class="h-full w-full object-cover rounded-xl"
+            loading="lazy"
+          />
+        </div>
+        <div>
+          <h2 class="font-accent text-h2 font-medium text-heading">aaaqhhhh, the art and science around Search Everywhere Optimization</h2>
+          <p class="mt-6 text-body-lg leading-relaxed text-text-body">
+            Yes, I said Search Everywhere Optimization. Getting found through search continues to be about high quality content that your prospective or existing clients are looking for.
+          </p>
+          <p class="mt-4 text-body-lg leading-relaxed text-text-body">
+            Search Engine Optimization (SEO) is monopolized by Google. In 2025, Google still rules search, but that is changing at the speed of light. Users are searching via voice, social platforms, LLM's like ChatGPT or Perplexity to name a few. But what is staying the same is 'results'. Quality content is required for ANY platform to include your information. So invest in yourself, through the creation of well thought out, informative, engaging, insightful, funny, educational content and you'll be found.
+          </p>
+          <p class="mt-4 text-body-lg leading-relaxed text-text-body">
+            Back to the art and science: there are thousands of variable Google takes into consideration when choosing the Search Engine Results Page (SERP), this is the science side and requires in-depth research on your business, your industry and your competition.
+          </p>
+          <p class="mt-4 text-body-lg leading-relaxed text-text-body">
+            Even if Google folded tomorrow, any search option out there is looking to serve their client the most up-to-date, relevant information. Let's get your information ranking in search. Search Everywhere Optimization (SEO) will result in an increase of highly targeted, organic traffic to your website. From there you better have a plan to convert all these new visitors!
+          </p>
+          <a href="/contact" class="btn-sem mt-8 inline-flex">
+            Get Started
+            <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+            </svg>
+          </a>
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- CTA -->
   <SEMCTASection
-    title="Let's Discuss Your Project"
-    description="Ready to take your marketing to the next level?"
-    ctaText="Contact Us"
+    title="Ready to Elevate Your Brand?"
+    description="Partner with Sharp End and let's create something extraordinary together."
+    ctaText="Get in Touch"
     ctaHref="/contact"
   />
 </SEMLayout>

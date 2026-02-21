@@ -24,6 +24,8 @@ const BLOG_CATEGORIES = [
   'brand-strategy',
   'paid-advertising',
   'creative-design',
+  'ai',
+  'marketing-strategy',
 ] as const
 
 interface BlogFrontmatter {
@@ -31,20 +33,8 @@ interface BlogFrontmatter {
   description?: string
   author?: string
   publishedAt?: string
-  updatedAt?: string
   category?: string
-  tags?: string[]
-  hero?: {
-    title?: string
-    lead?: string
-    image?: string
-    imageAlt?: string
-  }
-  seo?: {
-    ogImage?: string
-    canonical?: string
-    noIndex?: boolean
-  }
+  image?: string
   draft?: boolean
 }
 
@@ -53,20 +43,19 @@ interface CaseStudyFrontmatter {
   client?: string
   category?: string
   description?: string
-  metrics?: Array<{ label?: string; value?: string }>
-  hero?: {
-    title?: string
-    lead?: string
-    image?: string
-  }
+  date?: string
   duration?: string
+  heroImage?: string
+  logo?: string
+  gallery?: Array<{ src?: string; alt?: string }>
+  relatedStudies?: string[]
+  order?: number
   seo?: {
     ogImage?: string
     canonical?: string
     noIndex?: boolean
   }
   draft?: boolean
-  publishedAt?: string
 }
 
 // ---------------------------------------------------------------------------
@@ -209,16 +198,14 @@ function validateBlog(fm: Record<string, unknown>, file: string): ValidationErro
 
   // title
   if (typeof fm.title !== 'string' || fm.title.length === 0) {
-    errors.push({ file: rel, field: 'title', message: 'Required string (1-100 chars)' })
-  } else if (fm.title.length > 100) {
-    errors.push({ file: rel, field: 'title', message: `Too long: ${fm.title.length}/100 chars` })
+    errors.push({ file: rel, field: 'title', message: 'Required string' })
   }
 
   // description
   if (typeof fm.description !== 'string' || fm.description.length < 20) {
-    errors.push({ file: rel, field: 'description', message: 'Required string (20-300 chars)' })
-  } else if (fm.description.length > 300) {
-    errors.push({ file: rel, field: 'description', message: `Too long: ${fm.description.length}/300 chars` })
+    errors.push({ file: rel, field: 'description', message: 'Required string (20-500 chars)' })
+  } else if (fm.description.length > 500) {
+    errors.push({ file: rel, field: 'description', message: `Too long: ${fm.description.length}/500 chars` })
   }
 
   // author
@@ -242,32 +229,9 @@ function validateBlog(fm: Record<string, unknown>, file: string): ValidationErro
     })
   }
 
-  // tags (optional, but must be array if present)
-  if (fm.tags !== undefined && !Array.isArray(fm.tags)) {
-    errors.push({ file: rel, field: 'tags', message: 'Must be an array of strings' })
-  }
-
-  // hero
-  const hero = fm.hero as BlogFrontmatter['hero']
-  if (!hero || typeof hero !== 'object') {
-    errors.push({ file: rel, field: 'hero', message: 'Required object with title and lead' })
-  } else {
-    if (typeof hero.title !== 'string' || hero.title.length === 0) {
-      errors.push({ file: rel, field: 'hero.title', message: 'Required string' })
-    }
-    if (typeof hero.lead !== 'string' || hero.lead.length === 0) {
-      errors.push({ file: rel, field: 'hero.lead', message: 'Required string' })
-    }
-  }
-
-  // seo (optional object)
-  if (fm.seo !== undefined && typeof fm.seo !== 'object') {
-    errors.push({ file: rel, field: 'seo', message: 'Must be an object' })
-  } else if (fm.seo && typeof fm.seo === 'object') {
-    const seo = fm.seo as BlogFrontmatter['seo']
-    if (seo?.canonical && !/^https?:\/\//.test(String(seo.canonical))) {
-      errors.push({ file: rel, field: 'seo.canonical', message: 'Must be a valid URL' })
-    }
+  // image (optional string)
+  if (fm.image !== undefined && typeof fm.image !== 'string') {
+    errors.push({ file: rel, field: 'image', message: 'Must be a string' })
   }
 
   // draft (optional boolean)
@@ -284,9 +248,7 @@ function validateCaseStudy(fm: Record<string, unknown>, file: string): Validatio
 
   // title
   if (typeof fm.title !== 'string' || fm.title.length === 0) {
-    errors.push({ file: rel, field: 'title', message: 'Required string (1-100 chars)' })
-  } else if (fm.title.length > 100) {
-    errors.push({ file: rel, field: 'title', message: `Too long: ${fm.title.length}/100 chars` })
+    errors.push({ file: rel, field: 'title', message: 'Required string' })
   }
 
   // client
@@ -301,39 +263,17 @@ function validateCaseStudy(fm: Record<string, unknown>, file: string): Validatio
 
   // description
   if (typeof fm.description !== 'string' || fm.description.length < 20) {
-    errors.push({ file: rel, field: 'description', message: 'Required string (20-300 chars)' })
-  } else if (fm.description.length > 300) {
-    errors.push({ file: rel, field: 'description', message: `Too long: ${fm.description.length}/300 chars` })
+    errors.push({ file: rel, field: 'description', message: 'Required string (20+ chars)' })
   }
 
-  // metrics (optional array of {label, value})
-  if (fm.metrics !== undefined) {
-    if (!Array.isArray(fm.metrics)) {
-      errors.push({ file: rel, field: 'metrics', message: 'Must be an array of {label, value}' })
-    } else {
-      for (let i = 0; i < fm.metrics.length; i++) {
-        const m = fm.metrics[i] as Record<string, unknown>
-        if (typeof m?.label !== 'string' || m.label.length === 0) {
-          errors.push({ file: rel, field: `metrics[${i}].label`, message: 'Required string' })
-        }
-        if (typeof m?.value !== 'string' && typeof m?.value !== 'number') {
-          errors.push({ file: rel, field: `metrics[${i}].value`, message: 'Required string' })
-        }
-      }
-    }
+  // heroImage
+  if (typeof fm.heroImage !== 'string' || fm.heroImage.length === 0) {
+    errors.push({ file: rel, field: 'heroImage', message: 'Required string' })
   }
 
-  // hero
-  const hero = fm.hero as CaseStudyFrontmatter['hero']
-  if (!hero || typeof hero !== 'object') {
-    errors.push({ file: rel, field: 'hero', message: 'Required object with title and lead' })
-  } else {
-    if (typeof hero.title !== 'string' || hero.title.length === 0) {
-      errors.push({ file: rel, field: 'hero.title', message: 'Required string' })
-    }
-    if (typeof hero.lead !== 'string' || hero.lead.length === 0) {
-      errors.push({ file: rel, field: 'hero.lead', message: 'Required string' })
-    }
+  // order (optional number)
+  if (fm.order !== undefined && typeof fm.order !== 'number') {
+    errors.push({ file: rel, field: 'order', message: 'Must be a number' })
   }
 
   // duration (optional string)
@@ -341,24 +281,9 @@ function validateCaseStudy(fm: Record<string, unknown>, file: string): Validatio
     errors.push({ file: rel, field: 'duration', message: 'Must be a string' })
   }
 
-  // seo (optional object)
-  if (fm.seo !== undefined && typeof fm.seo !== 'object') {
-    errors.push({ file: rel, field: 'seo', message: 'Must be an object' })
-  } else if (fm.seo && typeof fm.seo === 'object') {
-    const seo = fm.seo as CaseStudyFrontmatter['seo']
-    if (seo?.canonical && !/^https?:\/\//.test(String(seo.canonical))) {
-      errors.push({ file: rel, field: 'seo.canonical', message: 'Must be a valid URL' })
-    }
-  }
-
   // draft (optional boolean)
   if (fm.draft !== undefined && typeof fm.draft !== 'boolean') {
     errors.push({ file: rel, field: 'draft', message: 'Must be a boolean' })
-  }
-
-  // publishedAt (optional date)
-  if (fm.publishedAt !== undefined && Number.isNaN(Date.parse(String(fm.publishedAt)))) {
-    errors.push({ file: rel, field: 'publishedAt', message: 'Invalid date format' })
   }
 
   return errors
@@ -397,6 +322,7 @@ function run(): void {
   for (const collection of collections) {
     const files = collectFiles(collection.dir, '.md')
       .concat(collectFiles(collection.dir, '.mdx'))
+      .concat(collectFiles(collection.dir, '.mdoc'))
 
     if (files.length === 0) {
       console.log(`\n📂 ${collection.name}: no content files found`)

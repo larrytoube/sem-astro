@@ -1,4 +1,5 @@
 ---
+import { getCollection } from 'astro:content'
 import SEMLayout from '../layouts/SEMLayout.astro'
 import SEMHero from '../components/sem/SEMHero.astro'
 import SEMSectionHeader from '../components/sem/SEMSectionHeader.astro'
@@ -24,70 +25,49 @@ const processSteps = [
   { number: 3, title: 'Analyze & Optimize', description: 'We continuously monitor the performance of your campaigns, making data-driven adjustments to ensure optimal results.' },
 ]
 
-const caseStudies = [
-  {
-    title: 'SmartyPantz',
-    client: 'SmartyPantz',
-    category: 'Brand Strategy',
-    description: 'SmartyPantz Escape Rooms was the first escape room experience provider in Gastown, located in the heart of Vancouver.',
-    href: '/case-studies/smartypantz',
-    image: '/images/case-studies/smartypantz.jpg',
-    logo: '/images/case-studies/smartypantz-logo.png',
-  },
-  {
-    title: 'Optical Glass Sculptures by fine art glass artist Jack Storms',
-    client: 'Jack Storms',
-    category: 'Brand Strategy',
-    description: 'Our team redefined their brand strategy, focusing on luxury and exclusivity, resulting in a 40% increase in customer engagement and a stronger market presence.',
-    href: '/case-studies/jack-storms',
-    image: '/images/case-studies/jack-storms.jpg',
-    logo: '/images/case-studies/jack-storms-logo.avif',
-  },
-  {
-    title: 'Building Success with Smithwood Builders',
-    client: 'Smithwood Builders',
-    category: 'Digital Marketing',
-    description: 'We developed a brand position strategy and executed a targeted digital marketing campaign that led to a 30% increase in enrollments and a stronger brand identity.',
-    href: '/case-studies/smithwood-builders',
-    image: '/images/case-studies/smithwood.png',
-    logo: '/images/case-studies/smithwood-logo.png',
-  },
-]
+const caseStudies = (await getCollection('case-studies'))
+  .filter(s => !s.data.draft)
+  .sort((a, b) => a.data.order - b.data.order)
+  .slice(0, 3)
+  .map(s => ({
+    title: s.data.title,
+    client: s.data.client,
+    category: s.data.category,
+    description: s.data.description,
+    href: `/case-studies/${toSlug(s.id)}`,
+    image: s.data.heroImage ? `/images/case-studies/${s.data.heroImage}` : undefined,
+    logo: s.data.logo ? `/images/case-studies/${s.data.logo}` : undefined,
+  }))
 
-const blogPosts = [
-  {
-    title: 'Workflow Optimization Trends Shaping 2025',
-    description: 'Optimizing workflows helps organizations streamline processes, boost productivity, cut costs, and improve overall results.',
-    category: 'Workflow Optimization',
-    date: 'May 2025',
-    href: '/blog',
-    featured: true,
-  },
-  {
-    title: 'The End of the Facebook Pixel Era: What It Means for Marketers',
-    description: "The disappearance of the Facebook Pixel isn't the end of data-driven marketing — it's the beginning of a new era.",
-    category: 'Digital Marketing',
-    date: 'October 2024',
-    href: '/blog',
-    image: '/images/blog/facebook-pixel.jpg',
-  },
-  {
-    title: 'The Future of Social Media Marketing in 2025 and Beyond',
-    description: 'The key to success lies in understanding your audience, creating valuable and engaging content, and leveraging the unique strengths of each platform.',
-    category: 'Digital Marketing',
-    date: 'June 2024',
-    href: '/blog',
-    image: '/images/blog/social-media-future.avif',
-  },
-  {
-    title: 'The Benefits of Data Analytics in Personalized Marketing',
-    description: 'Storytelling is a powerful tool for building brand loyalty and connecting with your audience on a deeper level.',
-    category: 'Data Analytics',
-    date: 'June 2024',
-    href: '/blog',
-    image: '/images/blog/data-analytics.avif',
-  },
-]
+function toSlug(id: string) {
+  return id.replace(/\/index\.(mdoc|mdx|md)$/, '').replace(/\.(mdoc|mdx|md)$/, '')
+}
+
+const categoryLabels: Record<string, string> = {
+  'digital-marketing': 'Digital Marketing',
+  'seo': 'SEO',
+  'social-media': 'Social Media',
+  'workflow-optimization': 'Workflow Optimization',
+  'data-analytics': 'Data Analytics',
+  'brand-strategy': 'Brand Strategy',
+  'paid-advertising': 'Paid Advertising',
+  'creative-design': 'Creative Design',
+  'ai': 'AI',
+  'marketing-strategy': 'Marketing Strategy',
+}
+
+const blogPosts = (await getCollection('blog', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf())
+  .slice(0, 4)
+  .map((post, i) => ({
+    title: post.data.title,
+    description: post.data.description,
+    category: categoryLabels[post.data.category] || post.data.category,
+    date: post.data.publishedAt.toLocaleDateString('en-US', { month: 'long', year: 'numeric' }),
+    href: `/blog/${toSlug(post.id)}`,
+    image: post.data.image ? `/images/blog/${post.data.image}` : undefined,
+    featured: i === 0,
+  }))
 ---
 
 <SEMLayout title="Your Partner in Success">
@@ -221,13 +201,5 @@ const blogPosts = [
     description="Partner with Sharp End and let's create something extraordinary together."
     ctaText="Get in Touch"
     ctaHref="/contact"
-  >
-    <img
-      slot="image"
-      src="/images/cta/cta-img.avif"
-      alt="Sharp End Marketing creative work"
-      class="h-auto max-h-80 w-auto rounded-xl object-contain"
-      loading="lazy"
-    />
-  </SEMCTASection>
+  />
 </SEMLayout>

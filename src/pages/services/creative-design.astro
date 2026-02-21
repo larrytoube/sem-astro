@@ -1,24 +1,31 @@
 ---
 import SEMLayout from '../../layouts/SEMLayout.astro'
-import SEMHero from '../../components/sem/SEMHero.astro'
 import SEMCTASection from '../../components/sem/SEMCTASection.astro'
 
-const offerings = [
+const approach = [
   {
-    title: 'Website Design',
-    description: 'Modern, responsive websites built to convert visitors into customers and reflect your brand identity.',
+    step: '01',
+    title: 'Discovery & Concept',
+    description: "Every great design starts with understanding. We learn about your brand, your audience, and your objectives. Then we develop creative concepts that align with your vision and stand out in your market.",
+    outcome: "A creative direction and concept that captures your brand essence and provides a foundation for all design work.",
   },
   {
-    title: 'Video Production',
-    description: 'Compelling video content — from concept and scripting to filming and post-production.',
+    step: '02',
+    title: 'Design & Development',
+    description: "Our team brings concepts to life with meticulous attention to detail. Whether it's a website, video, graphic, or photography direction, we craft every element to communicate your message with clarity and impact.",
+    outcome: "Polished, professional creative assets that are on-brand, on-message, and ready for deployment across all channels.",
   },
   {
-    title: 'Graphic Design',
-    description: 'Eye-catching visuals for digital and print that communicate your message with clarity and impact.',
+    step: '03',
+    title: 'Review & Refinement',
+    description: "We collaborate closely with you through the review process, refining designs based on your feedback until everything is perfect. Your satisfaction drives our creative process.",
+    outcome: "Final deliverables that exceed expectations and effectively communicate your brand's value to your target audience.",
   },
   {
-    title: 'Photography Direction',
-    description: 'Professional photography direction that captures your brand, products, and people at their best.',
+    step: '04',
+    title: 'Delivery & Support',
+    description: "We deliver all creative assets in the formats you need, optimized for their intended platforms. Plus, we provide ongoing support to ensure your creative stays fresh and effective.",
+    outcome: "A complete library of creative assets ready for immediate use, with ongoing support for future needs.",
   },
 ]
 ---
@@ -28,45 +35,94 @@ const offerings = [
   description="Creative design services from concept to completion — websites, video, graphics, and photography that bring your brand to life."
 >
   <!-- Hero -->
-  <SEMHero
-    label="Services"
-    title="Creative Design"
-    subtitle="From concept to completion; websites, video, graphics and photography, we have you covered."
-  />
-
-  <!-- What We Offer -->
-  <section class="px-6 py-20">
-    <div class="mx-auto max-w-4xl">
-      <h2 class="font-accent text-h2 font-medium text-heading">What We Offer</h2>
-      <ul class="mt-8 space-y-4">
-        {offerings.map(item => (
-          <li class="flex gap-3">
-            <span class="mt-1 text-teal-solid font-bold">&#10003;</span>
-            <div>
-              <h3 class="font-medium text-heading">{item.title}</h3>
-              <p class="mt-1 text-sm text-text-body">{item.description}</p>
-            </div>
-          </li>
-        ))}
-      </ul>
+  <section class="px-6 pt-12 pb-8">
+    <div class="mx-auto max-w-4xl text-center">
+      <p class="section-label mb-6 justify-center">
+        <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M9.53 16.122a3 3 0 00-5.78 1.128 2.25 2.25 0 01-2.4 2.245 4.5 4.5 0 008.4-2.245c0-.399-.078-.78-.22-1.128zm0 0a15.998 15.998 0 003.388-1.62m-5.043-.025a15.994 15.994 0 011.622-3.395m3.42 3.42a15.995 15.995 0 004.764-4.648l3.876-5.814a1.151 1.151 0 00-1.597-1.597L14.146 6.32a15.996 15.996 0 00-4.649 4.764m3.42 3.42a6.776 6.776 0 00-3.42-3.42" />
+        </svg>
+        CREATIVE DESIGN
+      </p>
+      <h1 class="font-accent text-h1 font-medium text-heading md:text-hero">From Concept to Completion</h1>
+      <p class="mt-6 text-body-lg leading-relaxed text-text-body">
+        Websites, video, graphics and photography — we have you covered. Great design communicates your value instantly.
+      </p>
     </div>
   </section>
 
-  <!-- Why This Matters -->
+  <!-- About Service -->
+  <section class="px-6 py-16">
+    <div class="mx-auto max-w-7xl">
+      <div class="grid items-center gap-12 md:grid-cols-2">
+        <div class="overflow-hidden rounded-xl">
+          <img
+            src="/images/services/services-hero.jpg"
+            alt="Creative design work"
+            class="h-full w-full object-cover rounded-xl"
+            loading="lazy"
+          />
+        </div>
+        <div>
+          <p class="section-label mb-4">
+            <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
+            </svg>
+            ABOUT CREATIVE DESIGN
+          </p>
+          <h2 class="font-accent text-h2 font-medium text-heading">Unlock your business potential with expert Digital Marketing</h2>
+          <p class="mt-6 text-body-lg leading-relaxed text-text-body">
+            Great design is not just about looking good — it's about communicating your value instantly. Whether it's a website, a video, or a social graphic, quality creative work builds trust, captures attention, and makes your brand memorable.
+          </p>
+          <p class="mt-4 text-body-lg leading-relaxed text-text-body">
+            Our creative team brings together expertise in web design, video production, graphic design, and photography direction to deliver work that elevates your brand across every touchpoint.
+          </p>
+          <a href="/contact" class="btn-sem mt-8 inline-flex">
+            Get Started
+            <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Our Approach -->
   <section class="bg-bg-light px-6 py-20">
-    <div class="mx-auto max-w-4xl text-center">
-      <h2 class="font-accent text-h2 font-medium text-heading">Why This Matters</h2>
-      <p class="mt-6 text-body-lg leading-relaxed text-text-body">
-        Great design is not just about looking good — it is about communicating your value instantly. Whether it is a website, a video, or a social graphic, quality creative work builds trust, captures attention, and makes your brand memorable.
+    <div class="mx-auto max-w-7xl">
+      <p class="section-label mb-4">
+        <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M7.217 10.907a2.25 2.25 0 100 2.186m0-2.186c.18.324.283.696.283 1.093s-.103.77-.283 1.093m0-2.186l9.566-5.314m-9.566 7.5l9.566 5.314m0 0a2.25 2.25 0 103.935 2.186 2.25 2.25 0 00-3.935-2.186zm0-12.814a2.25 2.25 0 103.933-2.185 2.25 2.25 0 00-3.933 2.185z" />
+        </svg>
+        OUR APPROACH
       </p>
+      <h2 class="font-accent text-h2 font-medium text-heading">Our Approach to Creative Design</h2>
+      <p class="mt-4 text-body-lg leading-relaxed text-text-body">
+        Our process is designed to deliver results at every stage of your brand's creative journey. Here's how we do it:
+      </p>
+
+      <div class="mt-12 grid gap-8 md:grid-cols-2">
+        {approach.map(item => (
+          <div class="rounded-2xl bg-white p-8 shadow-card">
+            <span class="text-sm font-semibold text-teal-solid">{item.step}</span>
+            <h3 class="mt-2 font-accent text-h4 font-medium text-heading">{item.title}</h3>
+            <p class="mt-4 text-sm leading-relaxed text-text-body">{item.description}</p>
+            <div class="mt-4 rounded-lg bg-bg-light p-4">
+              <p class="text-sm leading-relaxed text-text-body">
+                <span class="font-semibold text-heading">Outcome:</span> {item.outcome}
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   </section>
 
   <!-- CTA -->
   <SEMCTASection
-    title="Let's Discuss Your Project"
-    description="Ready to take your marketing to the next level?"
-    ctaText="Contact Us"
+    title="Ready to Elevate Your Brand?"
+    description="Partner with Sharp End and let's create something extraordinary together."
+    ctaText="Get in Touch"
     ctaHref="/contact"
   />
 </SEMLayout>

@@ -36,6 +36,41 @@
 - [x] **INFRA-002**: Deploy preview workflow (Lighthouse + axe-core)
 - [x] **INFRA-003**: Lighthouse performance budgets
 
+## P0 — CMS (Partial)
+
+- [x] **CMS-001**: Set up Keystatic CMS with custom Astro 5 integration
+- [x] **CMS-002**: Blog collection in Keystatic (7 posts, directory format, image management)
+- [x] **CMS-003**: Case studies collection in Keystatic (5 studies, directory format, gallery/related)
+- [x] **CMS-004**: Install Vercel adapter for SSR Keystatic routes
+- [x] **CMS-005**: Dual-mode storage config (local dev / GitHub production)
+- [ ] **CMS-006**: Complete Keystatic GitHub App setup (manual steps — see below)
+
+### CMS-006: Keystatic GitHub OAuth Setup (Manual Steps)
+
+Code changes are complete. These manual steps remain:
+
+1. **Create GitHub App via Keystatic wizard**
+   - Run `pnpm dev`, visit `http://127.0.0.1:4322/keystatic`
+   - Keystatic detects the GitHub storage config and shows a setup wizard
+   - Follow prompts — it creates a GitHub App and writes credentials to `.env`
+   - Grant the app access to `larrytoube/sem-astro` repository
+
+2. **Configure Vercel environment variables**
+   - Go to Vercel Dashboard > sem-astro > Settings > Environment Variables
+   - Add from `.env` (generated in step 1):
+     - `KEYSTATIC_GITHUB_CLIENT_ID` (Production)
+     - `KEYSTATIC_GITHUB_CLIENT_SECRET` (Production, sensitive)
+     - `KEYSTATIC_SECRET` (Production, sensitive)
+     - `PUBLIC_KEYSTATIC_GITHUB_APP_SLUG` (Production)
+
+3. **Add OAuth callback URL to GitHub App settings**
+   - In GitHub > Settings > Developer Settings > GitHub Apps > your app
+   - Add callback: `https://your-domain.com/api/keystatic/github/oauth/callback`
+
+4. **Redeploy on Vercel** to pick up new env vars
+
+After completing these steps, `https://your-domain.com/keystatic` will require GitHub login and content edits become commits to the repo.
+
 ## P1 — Quality
 
 - [x] **QUAL-001**: Eval scripts (validate-frontmatter, brand-check, a11y, seo, perf, consistency)
@@ -44,8 +79,8 @@
 
 ## P2 — Content Enhancement
 
-- [ ] **CONTENT-001**: Add real blog posts as MDX content
-- [ ] **CONTENT-002**: Add real case study content as MDX
+- [x] **CONTENT-001**: Add real blog posts as Markdoc content (7 posts via Keystatic)
+- [x] **CONTENT-002**: Add real case study content as Markdoc (5 studies via Keystatic)
 - [ ] **CONTENT-003**: Add real images (team photos, case study images, logo)
 - [ ] **CONTENT-004**: Write privacy policy page
 
