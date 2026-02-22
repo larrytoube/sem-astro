@@ -32,7 +32,7 @@
 - **Config**: `keystatic.config.ts` — defines `blog` and `caseStudies` collections
 - **Storage**: Dual-mode via `import.meta.env.DEV`
   - Dev: `{ kind: 'local' }` — reads/writes local files, no auth
-  - Production: `{ kind: 'github', repo: 'larrytoube/sem-astro' }` — GitHub API, OAuth required
+  - Production: `{ kind: 'github', repo: 'madeotoube/sem-astro' }` — GitHub API, OAuth required
 - **Custom integration**: `keystatic()` in `astro.config.mjs` (replaces broken `@keystatic/astro`)
   - Vite plugin resolves `virtual:keystatic-config`
   - `injectRoute` for `/keystatic/[...params]` and `/api/keystatic/[...params]` (both `prerender: false`)

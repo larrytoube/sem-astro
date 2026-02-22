@@ -1,12 +1,13 @@
 import { config, fields, collection } from '@keystatic/core';
 
 export default config({
-  storage: import.meta.env.DEV
-    ? { kind: 'local' as const }
-    : {
-        kind: 'github' as const,
-        repo: 'larrytoube/sem-astro',
-      },
+  storage:
+    import.meta.env.DEV && import.meta.env.PUBLIC_KEYSTATIC_STORAGE_MODE !== 'github'
+      ? { kind: 'local' as const }
+      : {
+          kind: 'github' as const,
+          repo: 'madeotoube/sem-astro',
+        },
   collections: {
     blog: collection({
       label: 'Blog Posts',

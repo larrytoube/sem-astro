@@ -43,17 +43,18 @@
 - [x] **CMS-003**: Case studies collection in Keystatic (5 studies, directory format, gallery/related)
 - [x] **CMS-004**: Install Vercel adapter for SSR Keystatic routes
 - [x] **CMS-005**: Dual-mode storage config (local dev / GitHub production)
-- [ ] **CMS-006**: Complete Keystatic GitHub App setup (manual steps — see below)
+- [x] **CMS-006**: Complete Keystatic GitHub App setup (manual steps completed on February 22, 2026)
 
-### CMS-006: Keystatic GitHub OAuth Setup (Manual Steps)
+### CMS-006: Keystatic GitHub OAuth Setup (Completed)
 
-Code changes are complete. These manual steps remain:
+Completed on February 22, 2026.
+Reference steps for future reconfiguration:
 
 1. **Create GitHub App via Keystatic wizard**
    - Run `pnpm dev`, visit `http://127.0.0.1:4322/keystatic`
    - Keystatic detects the GitHub storage config and shows a setup wizard
    - Follow prompts — it creates a GitHub App and writes credentials to `.env`
-   - Grant the app access to `larrytoube/sem-astro` repository
+   - Grant the app access to the configured repo (currently `madeotoube/sem-astro`)
 
 2. **Configure Vercel environment variables**
    - Go to Vercel Dashboard > sem-astro > Settings > Environment Variables
@@ -66,10 +67,14 @@ Code changes are complete. These manual steps remain:
 3. **Add OAuth callback URL to GitHub App settings**
    - In GitHub > Settings > Developer Settings > GitHub Apps > your app
    - Add callback: `https://your-domain.com/api/keystatic/github/oauth/callback`
+   - Current production callback: `https://sem-astro.vercel.app/api/keystatic/github/oauth/callback`
 
 4. **Redeploy on Vercel** to pick up new env vars
 
-After completing these steps, `https://your-domain.com/keystatic` will require GitHub login and content edits become commits to the repo.
+Notes from production setup:
+- Vercel production env vars were configured in the correct account/project (`larrytoube-9105` / `sem-astro`)
+- `src/keystatic/api.ts` normalizes forwarded host/proto headers so OAuth redirect URIs do not incorrectly use `localhost` in production
+- `https://sem-astro.vercel.app/keystatic` now uses GitHub OAuth and repo-backed edits
 
 ## P1 — Quality
 

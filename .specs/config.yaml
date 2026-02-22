@@ -10,7 +10,7 @@ linear:
     seo: "seo"
 
 github:
-  repo: "larrytoube/sem-astro"
+  repo: "madeotoube/sem-astro"
   branch_prefix: "content/"
   required_checks:
     - "build"
