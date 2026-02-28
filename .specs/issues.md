@@ -54,7 +54,7 @@ Reference steps for future reconfiguration:
    - Run `pnpm dev`, visit `http://127.0.0.1:4322/keystatic`
    - Keystatic detects the GitHub storage config and shows a setup wizard
    - Follow prompts — it creates a GitHub App and writes credentials to `.env`
-   - Grant the app access to the configured repo (currently `madeotoube/sem-astro`)
+   - Grant the app access to the configured repo (currently `Sharpend-Marketing/sem-astro`)
 
 2. **Configure Vercel environment variables**
    - Go to Vercel Dashboard > sem-astro > Settings > Environment Variables

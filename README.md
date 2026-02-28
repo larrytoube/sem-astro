@@ -70,7 +70,7 @@ Default local URL:
 
 Configured production repo:
 
-- `madeotoube/sem-astro`
+- `Sharpend-Marketing/sem-astro`
 
 ### Local Keystatic (Default)
 

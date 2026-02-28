@@ -6,7 +6,7 @@ export default config({
       ? { kind: 'local' as const }
       : {
           kind: 'github' as const,
-          repo: 'madeotoube/sem-astro',
+          repo: 'Sharpend-Marketing/sem-astro',
         },
   collections: {
     blog: collection({

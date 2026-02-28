@@ -10,7 +10,7 @@ linear:
     seo: "seo"
 
 github:
-  repo: "madeotoube/sem-astro"
+  repo: "Sharpend-Marketing/sem-astro"
   branch_prefix: "content/"
   required_checks:
     - "build"
